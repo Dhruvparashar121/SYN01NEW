@@ -1,0 +1,34 @@
+LIVE FIRE REAL SSH TERMINAL - START STEPS
+
+1. Install Node.js on the machine where this framework will run.
+2. Open terminal in this folder.
+3. Run:
+   npm install
+   npm start
+4. Open browser:
+   http://localhost:3000
+5. Go to Testing Module > Live Fire Module.
+6. Enter SSH Target IP, Username, Password, and Port in the credential panel.
+7. Click "Connect SSH Terminal".
+
+Important amendment:
+- The Live Fire module no longer uses a fixed browser-side SSH target.
+- The SSH target IP, username, and password are manually entered in the UI before connection.
+- Environment variables are optional fallbacks only if you want server-side defaults.
+
+Optional environment fallback examples:
+
+Linux/macOS:
+SSH_HOST=10.0.30.17 SSH_USER=superuser SSH_PASSWORD='admin@123' npm start
+
+Windows PowerShell:
+$env:SSH_HOST='10.0.30.17'; $env:SSH_USER='superuser'; $env:SSH_PASSWORD='admin@123'; npm start
+
+Note: The browser alone cannot open SSH. The Node.js server is required as the SSH bridge.
+
+MANUAL COMMAND MODE:
+1. Open Testing Module > Live Fire Kali SSH Terminal.
+2. Enter SSH details and click Connect SSH Terminal.
+3. After connected, click inside the black terminal and type commands manually.
+4. You can also type one full command in the Manual Command box and press Enter/Send Command.
+5. Ctrl+C button sends interrupt to the active SSH shell.
