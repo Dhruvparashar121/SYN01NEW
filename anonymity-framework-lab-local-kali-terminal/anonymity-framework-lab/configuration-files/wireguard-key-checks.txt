@@ -1,7 +1,0 @@
-cd /home/gcon/gu
-cat privatekey_1
-cat privatekey_2
-cat privatekey_3
-cat publickey_1
-cat publickey_2
-cat publickey_3
