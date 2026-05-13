@@ -1,0 +1,17 @@
+Latest amendments applied
+=========================
+
+1. Training Module
+   - Enlarged animated SVG learning visuals.
+   - Rewrote the concept and importance text using clear bullets and bold terms.
+   - Kept Detailed Setup on the left and Configuration Files on the right.
+
+2. Configuration Module
+   - Converted command explanations into bold, bullet-based learning notes.
+   - Preserved command blocks, copy button, and expected Kali output simulation.
+
+3. Testing Module
+   - Kali terminal and Ubuntu/Guacamole screen are now exact left-right panels.
+   - Command guide/hints moved below the Kali screen.
+   - Guacamole connection inputs moved below the Ubuntu screen.
+   - The large upper area is now reserved for live visual testing.

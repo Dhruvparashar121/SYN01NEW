@@ -1,0 +1,9 @@
+Testing captures are now live.
+
+The previous static Wireshark simulation has been removed as requested.
+Use the Testing Module:
+
+1. Connect the Ubuntu observation machine through Apache Guacamole on the right side.
+2. Open Wireshark inside Ubuntu.
+3. Run Kali commands from the left-side Live Fire terminal.
+4. Observe UDP/51820, ICMP, traceroute, SSH, DNS, ARP or other permitted lab traffic in real time.

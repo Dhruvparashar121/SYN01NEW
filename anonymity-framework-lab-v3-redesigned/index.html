@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AF-LAB // Anonymity Framework</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="stylesheet" href="/xterm/xterm.css"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+<div class="app-shell">
+
+<!-- ════ SVG icon-only symbols (no real logo files for these) ═════════ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <defs>
+    <symbol id="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+    </symbol>
+    <symbol id="icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <polygon points="5,3 19,12 5,21"/>
+    </symbol>
+    <symbol id="icon-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <polyline points="3,6 5,6 21,6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/>
+    </symbol>
+    <symbol id="icon-warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+    </symbol>
+    <symbol id="icon-terminal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <polyline points="4,17 10,11 4,5"/><line x1="12" y1="19" x2="20" y2="19"/>
+    </symbol>
+    <symbol id="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+    </symbol>
+    <!-- Firewall shield (no file supplied) -->
+    <symbol id="logo-firewall" viewBox="0 0 100 100">
+      <path fill="none" stroke="#ff3355" stroke-width="4" d="M50 10 L85 26 L85 58 Q85 78 50 92 Q15 78 15 58 L15 26Z" opacity=".6"/>
+      <path fill="#ff3355" opacity=".15" d="M50 10 L85 26 L85 58 Q85 78 50 92 Q15 78 15 58 L15 26Z"/>
+      <line x1="30" y1="42" x2="70" y2="42" stroke="#ff3355" stroke-width="4" opacity=".8"/>
+      <line x1="30" y1="54" x2="70" y2="54" stroke="#ff3355" stroke-width="4" opacity=".6"/>
+      <line x1="30" y1="66" x2="70" y2="66" stroke="#ff3355" stroke-width="4" opacity=".4"/>
+    </symbol>
+    <!-- VPS server (no file supplied) -->
+    <symbol id="logo-vps" viewBox="0 0 100 100">
+      <rect x="20" y="20" width="60" height="18" rx="4" fill="none" stroke="#00e5ff" stroke-width="3" opacity=".6"/>
+      <rect x="20" y="44" width="60" height="18" rx="4" fill="none" stroke="#00e5ff" stroke-width="3" opacity=".5"/>
+      <rect x="20" y="68" width="60" height="18" rx="4" fill="none" stroke="#00e5ff" stroke-width="3" opacity=".4"/>
+      <circle cx="72" cy="29" r="4" fill="#00e5ff" opacity=".7"/>
+      <circle cx="72" cy="53" r="4" fill="#00e5ff" opacity=".5"/>
+      <circle cx="72" cy="77" r="4" fill="#00e5ff" opacity=".3"/>
+    </symbol>
+    <!-- Network/IT (no file supplied) -->
+    <symbol id="logo-network" viewBox="0 0 100 100">
+      <circle cx="50" cy="22" r="8" fill="#00e676" opacity=".8"/>
+      <circle cx="22" cy="72" r="8" fill="#00e676" opacity=".7"/>
+      <circle cx="78" cy="72" r="8" fill="#00e676" opacity=".7"/>
+      <line x1="50" y1="30" x2="22" y2="64" stroke="#00e676" stroke-width="3" opacity=".4"/>
+      <line x1="50" y1="30" x2="78" y2="64" stroke="#00e676" stroke-width="3" opacity=".4"/>
+      <line x1="30" y1="72" x2="70" y2="72" stroke="#00e676" stroke-width="3" opacity=".4"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ════════════════ TOPBAR ════════════════════════════════════════════ -->
+<header class="topbar">
+  <div class="brand-row">
+    <div class="brand-mark">
+      <img src="assets/kali.png" alt="Kali" style="width:32px;height:32px;object-fit:contain;filter:brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(190deg)"/>
+    </div>
+    <div>
+      <h1>Anonymity Framework Lab</h1>
+      <p>// training · configuration · live-fire · guacamole-edition</p>
+    </div>
+  </div>
+
+  <nav class="top-nav" aria-label="Module navigation">
+    <button class="nav-btn active" data-tab="training">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      Training
+    </button>
+    <button class="nav-btn" data-tab="configuration">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4,17 10,11 4,5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+      Configuration
+    </button>
+    <button class="nav-btn" data-tab="testing">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5,3 19,12 5,21"/></svg>
+      Live Fire
+    </button>
+  </nav>
+
+  <div class="lab-badge"><span class="pulse"></span> Authorised Lab</div>
+</header>
+
+<!-- ════════════════ WORKSPACE ════════════════════════════════════════ -->
+<main class="workspace">
+
+  <!-- Hero -->
+  <section class="hero-card">
+    <div>
+      <span class="eyebrow">CLIENT → FIREWALL → VPS1 → VPS2 → TOR → IT-NETWORK</span>
+      <h2><span>Anonymity-Routing</span> Trainer</h2>
+      <p>// Six-stage WireGuard tunnel chain · Metasploit-style step guide · Apache Guacamole remote desktop for live Wireshark packet observation</p>
+
+      <!-- Tech logo strip using real files -->
+      <div class="hero-logos">
+        <div class="hero-logo-item">
+          <img src="assets/kali.png" alt="Kali Linux"/>Kali Linux
+        </div>
+        <div class="hero-logo-item">
+          <img src="assets/wireguard.svg" alt="WireGuard"/>WireGuard
+        </div>
+        <div class="hero-logo-item">
+          <img src="assets/tor.svg" alt="Tor"/>Tor Network
+        </div>
+        <div class="hero-logo-item">
+          <img src="assets/guacamole.png" alt="Guacamole"/>Apache Guacamole
+        </div>
+        <div class="hero-logo-item">
+          <img src="assets/ubuntu.svg" alt="Ubuntu"/>Ubuntu
+        </div>
+        <div class="hero-logo-item">
+          <img src="assets/wireshark.png" alt="Wireshark"/>Wireshark
+        </div>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div><strong>06</strong><span>Config Steps</span></div>
+      <div><strong>RDP/VNC</strong><span>Guacamole</span></div>
+      <div><strong>PTY</strong><span>Live Shell</span></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ TRAINING ══════════════════════════════════════ -->
+  <section id="training" class="tab-panel active">
+    <div class="section-title">
+      <span class="eyebrow">Training Module</span>
+      <h2>Concept, diagram, setup &amp; config files</h2>
+    </div>
+
+    <div class="training-grid large-training-grid">
+
+      <article class="glass-card concept-card large-visual-card">
+        <div class="concept-tech-badge">
+          <img src="assets/kali.png" alt="Kali" style="width:16px;height:16px;object-fit:contain"/>
+          <img src="assets/wireguard.svg" alt="WireGuard" style="width:16px;height:16px;object-fit:contain"/>
+          <img src="assets/tor.svg" alt="Tor" style="width:16px;height:16px;object-fit:contain"/>
+          <span>Kali Linux · WireGuard · Tor</span>
+        </div>
+        <img class="training-visual" src="assets/what-framework.svg" alt="Framework architecture"/>
+        <div class="learning-copy">
+          <h3>What is the Framework?</h3>
+          <p>This lab shows how traffic moves from a Kali client through controlled relay stages before reaching the final IT network.</p>
+          <ul class="clean-list strong-list">
+            <li><strong>Client:</strong> the Kali machine where testing commands are launched.</li>
+            <li><strong>Firewall:</strong> controls which traffic is allowed to enter or leave the lab path.</li>
+            <li><strong>VPS-1 &amp; VPS-2:</strong> relay nodes that forward traffic and change what each side can directly observe.</li>
+            <li><strong>Tor / final stage:</strong> represents the last anonymity or observation layer in the training chain.</li>
+          </ul>
+        </div>
+        <div class="mini-grid">
+          <div>
+            <img src="assets/kali.png" alt="Kali" class="mini-logo"/>
+            <b>Client</b><span>Origin workstation</span>
+          </div>
+          <div>
+            <svg style="width:22px;height:22px"><use href="#logo-vps"/></svg>
+            <b>Relays</b><span>VPS-1 and VPS-2</span>
+          </div>
+          <div>
+            <img src="assets/ubuntu.svg" alt="Ubuntu" class="mini-logo"/>
+            <b>Observer</b><span>Ubuntu + Wireshark</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="glass-card concept-card large-visual-card">
+        <div class="concept-tech-badge">
+          <img src="assets/wireshark.png" alt="Wireshark" style="width:16px;height:16px;object-fit:contain"/>
+          <span>Wireshark · Red &amp; Blue Team</span>
+        </div>
+        <img class="training-visual" src="assets/importance.svg" alt="Why this lab matters"/>
+        <div class="learning-copy">
+          <h3>Why it Matters</h3>
+          <p>Students must understand both sides — what the red team sends and what the blue team can actually see at each hop.</p>
+          <ul class="clean-list strong-list">
+            <li><strong>Red-team view:</strong> route validation, tunnel checks, traceroute testing and leakage checks.</li>
+            <li><strong>Blue-team view:</strong> observe packets, source-IP changes, ports, DNS/ICMP evidence and timing.</li>
+            <li><strong>Instructor view:</strong> every hop with repeatable commands, expected outputs and live screen evidence.</li>
+            <li><strong>Safety:</strong> keep the activity inside an authorised Proxmox lab/VLAN only.</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Animated packet flow diagram -->
+    <div class="glass-card diagram-card">
+      <div class="diagram-head">
+        <div>
+          <span class="eyebrow">Animated Packet Path</span>
+          <h3>Hop-by-hop visibility map</h3>
+        </div>
+        <span class="flow-chip">Safe lab visualisation</span>
+      </div>
+      <div class="flow-line">
+        <div class="flow-node client">
+          <img src="assets/kali.png" alt="Kali" class="flow-logo"/>
+          CLIENT<small>10.0.30.10</small>
+        </div>
+        <div class="flow-link"><span></span></div>
+        <div class="flow-node firewall">
+          <svg style="width:26px;height:26px"><use href="#logo-firewall"/></svg>
+          FIREWALL<small>10.0.30.1</small>
+        </div>
+        <div class="flow-link"><span></span></div>
+        <div class="flow-node vps">
+          <svg style="width:26px;height:26px"><use href="#logo-vps"/></svg>
+          VPS-1<small>10.0.10.26</small>
+        </div>
+        <div class="flow-link"><span></span></div>
+        <div class="flow-node vps">
+          <svg style="width:26px;height:26px"><use href="#logo-vps"/></svg>
+          VPS-2<small>10.0.20.102</small>
+        </div>
+        <div class="flow-link"><span></span></div>
+        <div class="flow-node tor">
+          <img src="assets/tor.svg" alt="Tor" class="flow-logo"/>
+          TOR<small>10.0.40.102</small>
+        </div>
+        <div class="flow-link"><span></span></div>
+        <div class="flow-node it">
+          <svg style="width:26px;height:26px"><use href="#logo-network"/></svg>
+          IT-NET<small>10.0.40.100</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Setup + config files -->
+    <div class="setup-config-grid">
+      <article class="glass-card setup-card">
+        <div class="card-headline">
+          <span class="eyebrow">Build Sequence</span>
+          <h3>End-to-end setup steps</h3>
+        </div>
+        <ol class="setup-list" id="trainingSetupList"></ol>
+      </article>
+      <article class="glass-card setup-card">
+        <div class="card-headline">
+          <span class="eyebrow">Config Files</span>
+          <h3>Reference files per step</h3>
+        </div>
+        <div id="trainingConfigFiles" class="config-file-stack"></div>
+      </article>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════ CONFIGURATION ════════════════════════════════ -->
+  <section id="configuration" class="tab-panel">
+    <div class="section-title">
+      <span class="eyebrow">Configuration Module</span>
+      <h2>Metasploit-style command guide</h2>
+      <p>// Select a step · read the explanation · copy commands · run safe output simulation</p>
+    </div>
+
+    <div class="config-console-layout">
+
+      <aside class="glass-card lab-menu">
+        <div class="menu-heading">
+          <span class="eyebrow">Lab Menu</span>
+          <h3>Step-by-step guide</h3>
+        </div>
+        <div id="configStepMenu" class="step-menu"></div>
+      </aside>
+
+      <section class="glass-card config-detail-card">
+        <div class="detail-toolbar">
+          <div>
+            <span id="configTag" class="eyebrow">STEP 1</span>
+            <h3 id="configTitle">Client configuration</h3>
+          </div>
+          <div class="button-row compact-buttons">
+            <button id="copyConfigCommand" class="primary-btn">
+              <svg class="btn-icon"><use href="#icon-copy"/></svg>Copy Commands
+            </button>
+            <button id="simulateConfigRun" class="success-btn">
+              <svg class="btn-icon"><use href="#icon-play"/></svg>Run Simulation
+            </button>
+            <button id="resetConfigTerminal" class="ghost-btn">
+              <svg class="btn-icon"><use href="#icon-trash"/></svg>Clear
+            </button>
+          </div>
+        </div>
+
+        <div class="explain-grid">
+          <div class="explain-box">
+            <h4>◈ Explanation</h4>
+            <div id="configExplanation" class="rich-text"></div>
+          </div>
+          <div class="explain-box">
+            <h4>◈ Expected Output</h4>
+            <pre id="configExpectedOutput"></pre>
+          </div>
+        </div>
+
+        <label class="field-label">◈ Commands — copy and run on target machine</label>
+        <textarea id="configCommandEditor" class="code-editor" spellcheck="false"></textarea>
+
+        <div class="machine-window terminal-card">
+          <div class="window-titlebar">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <strong>kali@localhost:~$ — configuration output</strong>
+          </div>
+          <div id="configTerminal" class="terminal-body"></div>
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════ TESTING ═══════════════════════════════════════ -->
+  <section id="testing" class="tab-panel">
+    <div class="section-title">
+      <span class="eyebrow">Live Fire Module</span>
+      <h2>Kali terminal + Ubuntu screen via Apache Guacamole</h2>
+      <p>// Left: live shell of this machine · Right: Ubuntu observation desktop — launch Wireshark to watch packets in real time</p>
+    </div>
+
+    <div class="warning-strip">
+      <svg><use href="#icon-warn"/></svg>
+      <span><strong>Security notice:</strong> this page exposes an interactive local shell and a remote desktop launcher. Use only inside a trusted, closed lab/VLAN.</span>
+    </div>
+
+    <div class="live-fire-grid testing-screen-layout">
+
+      <!-- Kali live terminal -->
+      <section class="machine-window kali-live-panel screen-panel">
+        <div class="window-titlebar">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <img src="assets/kali.png" alt="Kali" style="width:16px;height:16px;object-fit:contain;margin-left:6px;opacity:.8"/>
+          <strong>kali@localhost — live fire terminal</strong>
+        </div>
+        <div class="terminal-connect-row screen-toolbar">
+          <span id="localShellStatus" class="ssh-status offline">● shell: offline</span>
+          <span id="terminalCwdBadge" class="terminal-cwd-badge">cwd: /website</span>
+          <button id="focusTerminal" class="ghost-btn small-btn">
+            <svg class="btn-icon" style="width:12px;height:12px"><use href="#icon-terminal"/></svg>Focus
+          </button>
+          <button id="sendCtrlC" class="danger-btn small-btn">Ctrl+C</button>
+        </div>
+        <div id="liveFireTerminal" class="terminal-body live-terminal real-terminal" tabindex="0"></div>
+      </section>
+
+      <!-- Ubuntu / Guacamole screen -->
+      <section class="machine-window ubuntu-live-panel screen-panel">
+        <div class="window-titlebar">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <img src="assets/guacamole.png" alt="Guacamole" style="width:16px;height:16px;object-fit:contain;margin-left:6px;opacity:.8"/>
+          <strong>ubuntu@observation — apache guacamole</strong>
+        </div>
+        <div class="screen-toolbar ubuntu-toolbar">
+          <span class="ssh-status online">● RDP/VNC: ready</span>
+          <img src="assets/wireshark.png" alt="Wireshark" style="width:14px;height:14px;object-fit:contain;opacity:.6"/>
+          <span class="terminal-cwd-badge">launch Wireshark after connect</span>
+        </div>
+        <div class="guac-frame-wrap">
+          <iframe id="guacFrame" title="Apache Guacamole Ubuntu Desktop" src="about:blank" allow="clipboard-read; clipboard-write; fullscreen"></iframe>
+          <div id="guacPlaceholder" class="guac-placeholder">
+            <img src="assets/guacamole.png" alt="Guacamole" style="width:40px;height:40px;object-fit:contain;margin-bottom:12px;opacity:.5"/>
+            <strong>Ubuntu Screen</strong>
+            <span>Connect below — then open Wireshark on Ubuntu to observe packets in real time while Kali commands run on the left.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Live command guide -->
+      <section class="glass-card live-guide-panel below-screen-panel">
+        <div class="live-hints">
+          <div>
+            <span class="eyebrow">Command Guide</span>
+            <h4 id="liveGuideTitle">Preparing local shell…</h4>
+            <p id="liveGuideHint">First hint appears after terminal connects.</p>
+          </div>
+          <div class="guide-actions">
+            <span id="liveGuideCounter" class="guide-counter">0/0</span>
+            <button id="resetLiveGuide" class="ghost-btn small-btn">Reset</button>
+          </div>
+        </div>
+        <div id="liveGuideCommandList" class="live-command-list"></div>
+        <div class="live-guide-progress"><div id="liveGuideProgressBar"></div></div>
+        <div id="liveGuideLog" class="live-guide-log"></div>
+      </section>
+
+      <!-- Guacamole connection panel -->
+      <section class="glass-card guac-control-panel below-screen-panel">
+        <div class="guac-head compact-guac-head">
+          <div>
+            <span class="eyebrow">Connection Config</span>
+            <h3>Connect Ubuntu Screen</h3>
+            <p>// Fill once — the Ubuntu desktop loads above, exactly beside the Kali terminal.</p>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+            <img src="assets/guacamole.png" alt="Guacamole" style="width:28px;height:28px;object-fit:contain;opacity:.8"/>
+            <span class="flow-chip">RDP / VNC</span>
+          </div>
+        </div>
+
+        <form id="guacForm" class="guac-form">
+          <label>Guacamole URL
+            <input id="guacBaseUrl" type="url" placeholder="http://192.168.1.50:8080/guacamole" required/>
+          </label>
+          <label>Admin User
+            <input id="guacAdminUser" type="text" value="guacadmin" autocomplete="username" required/>
+          </label>
+          <label>Admin Password
+            <input id="guacAdminPassword" type="password" placeholder="guacamole admin password" autocomplete="current-password" required/>
+          </label>
+          <label>Protocol
+            <select id="targetProtocol">
+              <option value="rdp">RDP — Ubuntu xrdp</option>
+              <option value="vnc">VNC — Ubuntu VNC server</option>
+            </select>
+          </label>
+          <label>Ubuntu IP
+            <input id="targetHost" type="text" placeholder="192.168.1.60" required/>
+          </label>
+          <label>Port
+            <input id="targetPort" type="number" value="3389" min="1" max="65535" required/>
+          </label>
+          <label>Ubuntu Username
+            <input id="targetUsername" type="text" placeholder="observer" autocomplete="off"/>
+          </label>
+          <label>Ubuntu Password
+            <input id="targetPassword" type="password" placeholder="ubuntu / vnc password" autocomplete="off"/>
+          </label>
+          <button class="success-btn" type="submit" style="grid-column:1/2">
+            <svg class="btn-icon"><use href="#icon-link"/></svg>Connect Ubuntu Screen
+          </button>
+          <button id="openGuacHome" class="ghost-btn" type="button" style="grid-column:2/3">
+            Open Guacamole Home
+          </button>
+        </form>
+
+        <div id="guacStatus" class="guac-status">◈ Waiting for connection details.</div>
+      </section>
+
+    </div>
+  </section>
+
+</main>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/xterm/xterm.js"></script>
+<script>
+/* Step icon map: real logo files for each config step */
+const STEP_LOGO_SRCS = [
+  'assets/kali.png',       /* Step 1 – Client WireGuard */
+  'assets/wireguard.svg',  /* Step 2 – VPS-1 WireGuard  */
+  'assets/wireguard.svg',  /* Step 3 – VPS-2 NAT        */
+  'assets/tor.svg',        /* Step 4 – Tor/Proxychains  */
+  'assets/wireguard.svg',  /* Step 5 – Key verification */
+  'assets/kali.png'        /* Step 6 – Traceroute       */
+];
+</script>
+<script src="js/app.js"></script>
+<script>
+/* Inject real logo <img> into each rendered step-menu item */
+(function injectStepLogos() {
+  const items = document.querySelectorAll('.step-menu-item');
+  items.forEach(function(item, i) {
+    const src = STEP_LOGO_SRCS[i] || 'assets/kali.png';
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = '';
+    img.className = 'sm-icon';
+    img.style.cssText = 'width:28px;height:28px;object-fit:contain;flex-shrink:0;margin-top:2px;opacity:.85';
+    item.insertBefore(img, item.firstChild);
+    const body = document.createElement('div');
+    body.className = 'sm-body';
+    while (item.children.length > 1) body.appendChild(item.children[1]);
+    item.appendChild(body);
+  });
+})();
+</script>
+</body>
+</html>

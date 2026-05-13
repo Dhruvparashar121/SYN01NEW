@@ -1,0 +1,7 @@
+traceroute 8.8.8.8
+
+Expected important lab hops from the document:
+1  20.20.20.2 (20.20.20.2)
+2  20.20.20.3 (20.20.20.3)
+3  10.0.20.1 (10.0.20.1)
+15 dns.google (8.8.8.8)
