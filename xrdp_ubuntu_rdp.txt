@@ -1,0 +1,41 @@
+#!/bin/bash
+
+set -e
+
+echo "[+] Updating packages..."
+sudo apt update -y
+
+echo "[+] Installing XFCE desktop and XRDP..."
+sudo apt install -y xfce4 xfce4-goodies xrdp dbus-x11
+
+echo "[+] Setting XFCE as default RDP session..."
+echo "xfce4-session" > ~/.xsession
+
+echo "[+] Adding xrdp user to ssl-cert group..."
+sudo adduser xrdp ssl-cert
+
+echo "[+] Enabling XRDP service..."
+sudo systemctl enable xrdp
+sudo systemctl restart xrdp
+
+echo "[+] Allowing RDP port 3389 if UFW is active..."
+if sudo ufw status | grep -q "Status: active"; then
+    sudo ufw allow 3389/tcp
+fi
+
+echo "[+] XRDP status:"
+sudo systemctl status xrdp --no-pager
+
+echo ""
+echo "=================================================="
+echo "XRDP installation completed"
+echo "=================================================="
+echo "Ubuntu IP address:"
+hostname -I
+echo ""
+echo "Use this IP in Guacamole."
+echo "Port: 3389"
+echo "Protocol: RDP"
+echo "Username: your Ubuntu username"
+echo "Password: your Ubuntu password"
+echo "=================================================="
