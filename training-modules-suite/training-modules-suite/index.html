@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Training Modules</title>
+  <link rel="stylesheet" href="css/portal.css" />
+</head>
+<body>
+  <div class="bg bg-a"></div>
+  <div class="bg bg-b"></div>
+  <div class="grid"></div>
+
+  <main class="portal-shell">
+    <section class="hero-card" id="chooser">
+      <p class="eyebrow">Unified Cyber Learning Interface</p>
+      <h1>Training Modules</h1>
+      <p class="hero-copy">Choose a learning module to open its full training interface. Each module loads inside the same unified web UI for a clean navigation experience.</p>
+      <div class="module-grid">
+        <button class="module-card" data-module="modules/anonymity-framework/index.html" data-title="Anonymity Framework">
+          <span class="icon-wrap icon-red">
+            <svg viewBox="0 0 72 72" aria-hidden="true">
+              <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#43e7ff"/><stop offset="1" stop-color="#7a9cff"/></linearGradient></defs>
+              <path d="M36 10l20 8v16c0 13-7.7 23.2-20 27-12.3-3.8-20-14-20-27V18l20-8z" fill="rgba(10,20,38,.2)" stroke="url(#g1)" stroke-width="3"/>
+              <circle cx="36" cy="31" r="4" fill="#eaf8ff"/>
+              <circle cx="25" cy="40" r="3.6" fill="#55ddff"/>
+              <circle cx="47" cy="40" r="3.6" fill="#55ddff"/>
+              <path d="M36 35v9M36 35l-9 4M36 35l9 4" stroke="#eaf8ff" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+            </svg>
+          </span>
+          <span class="module-name">Anonymity Framework</span>
+          <span class="module-desc">Blue cyber lab interface with training, configuration, and testing views.</span>
+        </button>
+
+        <button class="module-card" data-module="modules/lateral-movement/index.html" data-title="Lateral Movement">
+          <span class="icon-wrap icon-gold">
+            <svg viewBox="0 0 72 72" aria-hidden="true">
+              <defs><linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#ffd45d"/><stop offset="1" stop-color="#ff8a5b"/></linearGradient></defs>
+              <rect x="10" y="12" width="16" height="46" rx="8" fill="none" stroke="url(#g2)" stroke-width="3"/>
+              <rect x="29" y="18" width="14" height="36" rx="7" fill="none" stroke="#f4f8ff" stroke-width="3"/>
+              <rect x="46" y="24" width="16" height="24" rx="8" fill="none" stroke="#4ed5ff" stroke-width="3"/>
+              <path d="M26 35h3M43 35h3" stroke="#f7d95b" stroke-width="3" stroke-linecap="round"/>
+              <path d="M59 35h7" stroke="#4ed5ff" stroke-width="3" stroke-linecap="round"/>
+              <path d="M63 35l-5-4v8z" fill="#4ed5ff"/>
+            </svg>
+          </span>
+          <span class="module-name">Lateral Movement</span>
+          <span class="module-desc">VLAN-aware learning interface covering attacker path, pivoting, and defender telemetry.</span>
+        </button>
+
+        <button class="module-card" data-module="modules/geofencing/index.html" data-title="Geofencing">
+          <span class="icon-wrap icon-green">
+            <svg viewBox="0 0 72 72" aria-hidden="true">
+              <defs><linearGradient id="g3" x1="0" x2="1"><stop offset="0" stop-color="#58ffa6"/><stop offset="1" stop-color="#46d6ff"/></linearGradient></defs>
+              <circle cx="36" cy="25" r="13" fill="none" stroke="url(#g3)" stroke-width="3"/>
+              <path d="M23 25h26M36 12v26M26.5 16.5c3 3.2 4.8 7.4 4.8 12.5s-1.8 9.3-4.8 12.5M45.5 16.5c-3 3.2-4.8 7.4-4.8 12.5s1.8 9.3 4.8 12.5" stroke="#e9fbff" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+              <path d="M36 39c6 0 10 4.5 10 8H26c0-3.5 4-8 10-8z" fill="rgba(88,255,166,.25)" stroke="#9effc8" stroke-width="2"/>
+            </svg>
+          </span>
+          <span class="module-name">Geofencing</span>
+          <span class="module-desc">Access-control learning UI with improved SVG diagrams and stage-specific icons.</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="viewer hidden" id="viewerSection">
+      <div class="viewer-topbar">
+        <button class="back-btn" id="backBtn">← All Modules</button>
+        <div class="viewer-title" id="viewerTitle">Training Module</div>
+        <div class="switchers">
+          <button class="switcher" data-module="modules/anonymity-framework/index.html" data-title="Anonymity Framework">Anonymity Framework</button>
+          <button class="switcher" data-module="modules/lateral-movement/index.html" data-title="Lateral Movement">Lateral Movement</button>
+          <button class="switcher" data-module="modules/geofencing/index.html" data-title="Geofencing">Geofencing</button>
+        </div>
+      </div>
+      <div class="iframe-wrap">
+        <iframe id="moduleFrame" title="Training Module Viewer" src="about:blank"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/portal.js"></script>
+</body>
+</html>
