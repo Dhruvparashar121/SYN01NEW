@@ -1,0 +1,164 @@
+#!/bin/bash
+
+set -e
+
+# ==========================================================
+# Apache Guacamole Docker Installer for Kali Linux
+# Guacamole URL: http://<KALI-IP>:8080/guacamole/
+# Default login: guacadmin / guacadmin
+# ==========================================================
+
+GUAC_VERSION="1.6.0"
+INSTALL_DIR="/opt/guacamole-docker"
+POSTGRES_PASSWORD="GuacDBpass@123"
+POSTGRES_DB="guacamole_db"
+POSTGRES_USER="guacamole_user"
+
+echo "[+] Updating Kali packages..."
+sudo apt update -y
+
+echo "[+] Installing required packages..."
+sudo apt install -y docker.io curl wget net-tools ca-certificates gnupg lsb-release
+
+echo "[+] Enabling and starting Docker..."
+sudo systemctl enable docker
+sudo systemctl start docker
+
+echo "[+] Checking Docker status..."
+sudo docker --version
+
+echo "[+] Installing Docker Compose if missing..."
+
+if docker compose version >/dev/null 2>&1; then
+    COMPOSE_CMD="docker compose"
+    echo "[+] Docker Compose plugin already available."
+elif command -v docker-compose >/dev/null 2>&1; then
+    COMPOSE_CMD="docker-compose"
+    echo "[+] docker-compose already available."
+else
+    echo "[+] Trying to install docker-compose from apt..."
+    sudo apt install -y docker-compose || true
+
+    if command -v docker-compose >/dev/null 2>&1; then
+        COMPOSE_CMD="docker-compose"
+        echo "[+] docker-compose installed successfully."
+    else
+        echo "[!] docker-compose not found through apt."
+        echo "[+] Installing Docker Compose manually..."
+
+        sudo curl -L "https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-linux-x86_64" -o /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
+
+        if command -v docker-compose >/dev/null 2>&1; then
+            COMPOSE_CMD="docker-compose"
+            echo "[+] docker-compose manually installed successfully."
+        else
+            echo "[!] Failed to install Docker Compose."
+            exit 1
+        fi
+    fi
+fi
+
+echo "[+] Using Compose command: $COMPOSE_CMD"
+
+echo "[+] Creating Guacamole directory..."
+sudo mkdir -p "$INSTALL_DIR/init"
+cd "$INSTALL_DIR"
+
+echo "[+] Stopping old Guacamole containers if they exist..."
+sudo $COMPOSE_CMD down || true
+
+echo "[+] Creating docker-compose.yml..."
+
+sudo tee docker-compose.yml > /dev/null <<EOF
+version: "3.8"
+
+services:
+  guacd:
+    image: guacamole/guacd:${GUAC_VERSION}
+    container_name: guacd
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: guacamole-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  guacamole:
+    image: guacamole/guacamole:${GUAC_VERSION}
+    container_name: guacamole
+    restart: unless-stopped
+    depends_on:
+      - guacd
+      - postgres
+    ports:
+      - "8080:8080"
+    environment:
+      GUACD_HOSTNAME: guacd
+      POSTGRESQL_HOSTNAME: postgres
+      POSTGRESQL_DATABASE: ${POSTGRES_DB}
+      POSTGRESQL_USER: ${POSTGRES_USER}
+      POSTGRESQL_PASSWORD: ${POSTGRES_PASSWORD}
+
+volumes:
+  postgres_data:
+EOF
+
+echo "[+] Generating Guacamole PostgreSQL initialization file..."
+
+if [ ! -f "$INSTALL_DIR/init/initdb.sql" ]; then
+    sudo docker run --rm guacamole/guacamole:${GUAC_VERSION} /opt/guacamole/bin/initdb.sh --postgresql | sudo tee "$INSTALL_DIR/init/initdb.sql" > /dev/null
+    echo "[+] initdb.sql created."
+else
+    echo "[+] initdb.sql already exists. Skipping generation."
+fi
+
+echo "[+] Starting Guacamole containers..."
+sudo $COMPOSE_CMD up -d
+
+echo "[+] Waiting for containers to start..."
+sleep 15
+
+echo "[+] Container status:"
+sudo $COMPOSE_CMD ps
+
+KALI_IP=$(hostname -I | awk '{print $1}')
+
+echo ""
+echo "=========================================================="
+echo " Apache Guacamole installation completed"
+echo "=========================================================="
+echo ""
+echo "Open this in browser:"
+echo ""
+echo "  http://$KALI_IP:8080/guacamole/"
+echo ""
+echo "Default login:"
+echo ""
+echo "  Username: guacadmin"
+echo "  Password: guacadmin"
+echo ""
+echo "IMPORTANT:"
+echo "After first login, create a new admin user and delete/disable guacadmin."
+echo ""
+echo "Useful commands:"
+echo ""
+echo "  cd $INSTALL_DIR"
+echo "  sudo $COMPOSE_CMD ps"
+echo "  sudo $COMPOSE_CMD logs -f"
+echo "  sudo $COMPOSE_CMD restart"
+echo "  sudo $COMPOSE_CMD down"
+echo ""
+echo "=========================================================="
