@@ -1,0 +1,12 @@
+# Offensive Python (ACO-03) — Module 5 lab requirements
+#
+# Tested on Python 3.10+ (Ubuntu 22.04 LTS / Kali Linux 2024+).
+#
+# Why so few packages?
+#   * scapy gives us raw L2/L3 packet crafting and sniffing.
+#   * requests is only needed on the victim's browser_sim.py.
+#   * Everything else uses the Python standard library so students
+#     can read the source without chasing third-party abstractions.
+
+scapy>=2.5
+requests>=2.31
