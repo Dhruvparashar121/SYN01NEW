@@ -1,0 +1,1 @@
+Open index.html in a browser to launch the unified Training Modules UI. Use the three module buttons to open the integrated interfaces. For the Anonymity Framework live terminal / Guacamole features, a compatible local server environment is still required as in the original project.

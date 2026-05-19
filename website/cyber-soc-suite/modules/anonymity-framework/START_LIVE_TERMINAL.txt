@@ -1,0 +1,26 @@
+START THE LIVE FIRE WEBSITE
+===========================
+
+1. Install prerequisites:
+
+   sudo apt update
+   sudo apt install -y nodejs npm build-essential python3 make g++
+
+2. Install dependencies:
+
+   npm install
+
+3. Start the lab:
+
+   npm start
+
+4. Open:
+
+   http://localhost:3000
+
+   Or from another host in the same lab network:
+
+   http://<THIS_MACHINE_IP>:3000
+
+Security warning:
+The Testing Module exposes a live shell from this host and an Apache Guacamole launcher. Use only inside a trusted lab network. Restrict access with firewall rules.

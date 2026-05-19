@@ -1,0 +1,36 @@
+services:
+  guacd:
+    image: guacamole/guacd:1.6.0
+    container_name: af-guacd
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16
+    container_name: af-guacamole-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-guacamole_db}
+      POSTGRES_USER: ${POSTGRES_USER:-guacamole_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ChangeMe_Strong_DB_Password}
+    volumes:
+      - ./initdb.sql:/docker-entrypoint-initdb.d/initdb.sql:ro
+      - guacamole_postgres:/var/lib/postgresql/data
+
+  guacamole:
+    image: guacamole/guacamole:1.6.0
+    container_name: af-guacamole-web
+    restart: unless-stopped
+    depends_on:
+      - guacd
+      - postgres
+    ports:
+      - "8080:8080"
+    environment:
+      GUACD_HOSTNAME: guacd
+      POSTGRESQL_HOSTNAME: postgres
+      POSTGRESQL_DATABASE: ${POSTGRES_DB:-guacamole_db}
+      POSTGRESQL_USER: ${POSTGRES_USER:-guacamole_user}
+      POSTGRESQL_PASSWORD: ${POSTGRES_PASSWORD:-ChangeMe_Strong_DB_Password}
+
+volumes:
+  guacamole_postgres:

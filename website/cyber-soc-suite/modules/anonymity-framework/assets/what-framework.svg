@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#07111f"/>
+      <stop offset="55%" stop-color="#0b2440"/>
+      <stop offset="100%" stop-color="#06281f"/>
+    </linearGradient>
+    <linearGradient id="card1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1e293b"/><stop offset="1" stop-color="#0f172a"/></linearGradient>
+    <linearGradient id="card2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#064e3b"/><stop offset="1" stop-color="#0f172a"/></linearGradient>
+    <linearGradient id="card3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3b0764"/><stop offset="1" stop-color="#111827"/></linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#38bdf8"/>
+    </marker>
+    <path id="flowPath1" d="M260 260 C340 210, 395 210, 455 260"/>
+    <path id="flowPath2" d="M455 260 S645 310, 710 260 S835 210, 900 260"/>
+    <style>
+      .title{font-family:Segoe UI,Arial,sans-serif;font-weight:800;fill:#e5f6ff;letter-spacing:.5px}
+      .sub{font-family:Segoe UI,Arial,sans-serif;fill:#a7f3d0;font-size:17px}
+      .label{font-family:Segoe UI,Arial,sans-serif;font-weight:800;fill:white;font-size:30px;letter-spacing:.8px}
+      .small{font-family:Segoe UI,Arial,sans-serif;fill:#cbd5e1;font-size:15px}
+      .micro{font-family:Segoe UI,Arial,sans-serif;fill:#93c5fd;font-size:13px;font-weight:700}
+      .card{filter:url(#softShadow)}
+      .pulse{animation:pulse 1.8s ease-in-out infinite alternate; transform-origin:center; transform-box:fill-box}
+      .float{animation:float 3s ease-in-out infinite alternate; transform-origin:center; transform-box:fill-box}
+      .dash{stroke-dasharray:10 12; animation:dash 1.4s linear infinite}
+      @keyframes dash{to{stroke-dashoffset:-44}}
+      @keyframes pulse{from{opacity:.65; transform:scale(.96)}to{opacity:1; transform:scale(1.05)}}
+      @keyframes float{from{transform:translateY(0)}to{transform:translateY(-10px)}}
+    </style>
+  </defs>
+
+  <rect width="1100" height="520" rx="30" fill="url(#bg)"/>
+  <g opacity="0.13" stroke="#22c55e" stroke-width="1">
+    <path d="M0 80H1100M0 160H1100M0 240H1100M0 320H1100M0 400H1100"/>
+    <path d="M100 0V520M220 0V520M340 0V520M460 0V520M580 0V520M700 0V520M820 0V520M940 0V520"/>
+  </g>
+
+  <text x="550" y="48" text-anchor="middle" class="title" font-size="30">Anonymity Framework Concept</text>
+  <text x="550" y="78" text-anchor="middle" class="sub">Traffic visibility changes through multiple VPS relays and multiple Tor hops</text>
+
+  <!-- Main animated traffic path -->
+  <use href="#flowPath1" fill="none" stroke="#38bdf8" stroke-width="5" stroke-linecap="round" opacity="0.45" class="dash"/>
+  <use href="#flowPath2" fill="none" stroke="#ef4444" stroke-width="5" stroke-linecap="round" opacity="0.45" class="dash"/>
+  
+  
+  <circle r="8" fill="#38bdf8" filter="url(#glow)">
+    <animateMotion dur="4.2s" repeatCount="indefinite" rotate="auto"><mpath href="#flowPath"/></animateMotion>
+  </circle>
+  <circle r="5" fill="#ef4444" filter="url(#glow)">
+    <animateMotion dur="4.2s" begin="1.4s" repeatCount="indefinite" rotate="auto"><mpath href="#flowPath"/></animateMotion>
+  </circle>
+  <circle r="6" fill="#38bdf8" filter="url(#glow)">
+    <animateMotion dur="4.2s" begin="2.8s" repeatCount="indefinite" rotate="auto"><mpath href="#flowPath"/></animateMotion>
+  </circle>
+
+  
+  <!-- Directional packets -->
+  <circle r="6" fill="#38bdf8">
+    <animateMotion dur="4s" repeatCount="indefinite">
+      <mpath href="#flowPath1"/>
+    </animateMotion>
+  </circle>
+
+  <circle r="6" fill="#ef4444">
+    <animateMotion dur="4s" begin="2s" repeatCount="indefinite">
+      <mpath href="#flowPath2"/>
+    </animateMotion>
+  </circle>
+
+<!-- Attacker card -->
+  <g class="card float">
+    <rect x="65" y="150" width="240" height="220" rx="26" fill="url(#card1)" stroke="#38bdf8" stroke-width="2"/>
+    <circle cx="185" cy="196" r="42" fill="#0ea5e9" opacity=".18"/>
+    <!-- laptop icon -->
+    <rect x="145" y="178" width="80" height="50" rx="6" fill="none" stroke="#7dd3fc" stroke-width="5"/>
+    <path d="M130 238H240L228 256H142Z" fill="#7dd3fc" opacity=".85"/>
+    <circle cx="185" cy="202" r="7" fill="#22c55e" class="pulse"/>
+    <text x="185" y="306" text-anchor="middle" class="label">ATTACKER</text>
+    <text x="185" y="334" text-anchor="middle" class="small">source machine / client side</text>
+  </g>
+
+  <!-- Anonymity framework card -->
+  <g class="card">
+    <rect x="395" y="125" width="310" height="270" rx="30" fill="url(#card2)" stroke="#22c55e" stroke-width="2"/>
+
+    <!-- Main heading: split clearly inside box -->
+    <text x="550" y="158" text-anchor="middle" fill="#ffffff" font-size="22" font-family="Segoe UI, Arial, sans-serif" font-weight="900" letter-spacing=".6">
+      <tspan x="550" dy="0">ANONYMITY</tspan>
+      <tspan x="550" dy="28" fill="#22c55e">FRAMEWORK</tspan>
+    </text>
+
+    <!-- Subtitle: separated below heading, readable -->
+    <text x="550" y="215" text-anchor="middle" fill="#cbd5e1" font-size="14" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
+      <tspan x="550" dy="0">Multiple VPS</tspan>
+      <tspan x="550" dy="18">Multiple Tor</tspan>
+    </text>
+
+    <!-- Three centered, equidistant icons inside the box -->
+    <!-- VPS Relays -->
+    <g transform="translate(435 255)">
+      <rect x="0" y="0" width="70" height="25" rx="7" fill="#0f172a" stroke="#93c5fd" stroke-width="2"/>
+      <rect x="0" y="32" width="70" height="25" rx="7" fill="#0f172a" stroke="#93c5fd" stroke-width="2"/>
+      <circle cx="14" cy="12.5" r="4" fill="#22c55e" class="pulse"/>
+      <circle cx="14" cy="44.5" r="4" fill="#22c55e" class="pulse"/>
+      <text x="35" y="78" text-anchor="middle" fill="#dbeafe" font-size="10" font-family="Segoe UI, Arial, sans-serif" font-weight="800">VPS RELAYS</text>
+    </g>
+
+    <!-- Tunnel -->
+    <g transform="translate(507 255)">
+      <path d="M10 35 C30 5, 70 5, 90 35 C70 66, 30 66, 10 35Z" fill="none" stroke="#38bdf8" stroke-width="5" opacity=".9"/>
+      <path d="M27 35 C40 19, 60 19, 73 35 C60 52, 40 52, 27 35Z" fill="none" stroke="#a7f3d0" stroke-width="3" opacity=".9"/>
+      <text x="50" y="78" text-anchor="middle" fill="#cffafe" font-size="10" font-family="Segoe UI, Arial, sans-serif" font-weight="800">TUNNEL</text>
+    </g>
+
+    <!-- Tor Hops -->
+    <g transform="translate(605 253)">
+      <path d="M38 6 C20 20, 10 36, 13 52 C17 76, 59 76, 63 52 C66 36, 56 20, 38 6Z" fill="#a855f7" opacity=".75" stroke="#e9d5ff" stroke-width="2"/>
+      <path d="M28 32 C36 26, 45 26, 53 32M23 44 C35 38, 49 38, 61 44M24 55 C36 62, 51 62, 62 55" fill="none" stroke="#f5d0fe" stroke-width="2"/>
+      <text x="38" y="82" text-anchor="middle" fill="#f5d0fe" font-size="10" font-family="Segoe UI, Arial, sans-serif" font-weight="800">TOR HOPS</text>
+    </g>
+
+    <!-- Bottom caption inside same box -->
+    <rect x="420" y="355" width="260" height="27" rx="13.5" fill="#06111f" stroke="#22c55e" opacity=".9"/>
+    <text x="550" y="373" text-anchor="middle" fill="#cbd5e1" font-size="11.5" font-family="Segoe UI, Arial, sans-serif" font-weight="650">relay → tunnel → exit visibility</text>
+  </g>
+
+  <!-- Victim card -->
+  <g class="card float">
+    <rect x="795" y="150" width="240" height="220" rx="26" fill="url(#card3)" stroke="#c084fc" stroke-width="2"/>
+    <circle cx="915" cy="196" r="42" fill="#a855f7" opacity=".18"/>
+    <!-- target/network icon -->
+    <circle cx="915" cy="205" r="42" fill="none" stroke="#e9d5ff" stroke-width="5"/>
+    <circle cx="915" cy="205" r="24" fill="none" stroke="#e9d5ff" stroke-width="4"/>
+    <circle cx="915" cy="205" r="8" fill="#fb7185" class="pulse"/>
+    <path d="M915 158V190M915 220V252M868 205H900M930 205H962" stroke="#e9d5ff" stroke-width="4" stroke-linecap="round"/>
+    <text x="915" y="306" text-anchor="middle" class="label">VICTIM</text>
+    <text x="915" y="334" text-anchor="middle" class="small">observes anonymized exit traffic</text>
+  </g>
+<!-- Bottom legend -->
+  <g transform="translate(250 448)">
+    <rect x="0" y="0" width="600" height="42" rx="21" fill="#020617" opacity=".72" stroke="#334155"/>
+    <circle cx="32" cy="21" r="7" fill="#38bdf8"/><text x="50" y="26" class="small">request packets</text>
+    <circle cx="195" cy="21" r="7" fill="#22c55e"/><text x="213" y="26" class="small">protected tunnel path</text>
+    <circle cx="410" cy="21" r="7" fill="#ef4444"/><text x="428" y="26" class="small">visible exit traffic</text>
+  </g>
+</svg>
