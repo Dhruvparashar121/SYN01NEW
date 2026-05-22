@@ -1,0 +1,287 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+<title id="title">Geofencing Flowchart 03 - Improved Allowed Access</title>
+<desc id="desc">Improved high-definition allowed-access geofencing SVG with clean convergence paths and centered text inside boxes.</desc>
+
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#071a33"/>
+    <stop offset="55%" stop-color="#031120"/>
+    <stop offset="100%" stop-color="#020814"/>
+  </linearGradient>
+  <radialGradient id="halo" cx="50%" cy="32%" r="68%">
+    <stop offset="0%" stop-color="#1f8cff" stop-opacity="0.30"/>
+    <stop offset="55%" stop-color="#083e75" stop-opacity="0.13"/>
+    <stop offset="100%" stop-color="#020814" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#0b2545" stop-opacity="0.95"/>
+    <stop offset="58%" stop-color="#06192f" stop-opacity="0.95"/>
+    <stop offset="100%" stop-color="#0a1225" stop-opacity="0.98"/>
+  </linearGradient>
+  <linearGradient id="cardNavy" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#102b4f"/>
+    <stop offset="100%" stop-color="#07172a"/>
+  </linearGradient>
+  <linearGradient id="cardRed" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#4e1429"/>
+    <stop offset="100%" stop-color="#171224"/>
+  </linearGradient>
+  <linearGradient id="cardBlue" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#07345c"/>
+    <stop offset="100%" stop-color="#09172b"/>
+  </linearGradient>
+  <linearGradient id="cardGold" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#5b4211"/>
+    <stop offset="100%" stop-color="#161629"/>
+  </linearGradient>
+  <linearGradient id="cardGreen" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#0b4b38"/>
+    <stop offset="100%" stop-color="#07192a"/>
+  </linearGradient>
+  <linearGradient id="cardPurple" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#3c246b"/>
+    <stop offset="100%" stop-color="#07172a"/>
+  </linearGradient>
+  <filter id="softShadow" x="-20%" y="-20%" width="140%" height="160%">
+    <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000814" flood-opacity="0.58"/>
+  </filter>
+  <filter id="glowCyan" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="glowRed" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="glowGold" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="glowGreen" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+
+  <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+    <path d="M80 0H0V80" fill="none" stroke="#255178" stroke-width="1" stroke-opacity="0.13"/>
+  </pattern>
+  <marker id="arrowCyan" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#7ee7ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <marker id="arrowGold" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#ffe674" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <marker id="arrowGreen" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8dffbe" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <marker id="arrowRed" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#ff8aa8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <style><![CDATA[
+    .route { fill:none; stroke-linecap:round; stroke-linejoin:round; stroke-width:5; stroke-dasharray:14 11; animation: dash 3.8s linear infinite; }
+    .routeSolid { fill:none; stroke-linecap:round; stroke-linejoin:round; stroke-width:5; }
+    .packet { filter:url(#glowCyan); opacity:.96; }
+    .packetGold { filter:url(#glowGold); opacity:.96; }
+    .packetRed { filter:url(#glowRed); opacity:.96; }
+    .packetGreen { filter:url(#glowGreen); opacity:.96; }
+    .float { animation: floatY 5.5s ease-in-out infinite; transform-box:fill-box; transform-origin:center; }
+    .pulse { animation: pulse 3.2s ease-in-out infinite; transform-box:fill-box; transform-origin:center; }
+    .blink { animation: blink 1.25s ease-in-out infinite; }
+    @keyframes dash { to { stroke-dashoffset: -110; } }
+    @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+    @keyframes pulse { 0%,100% { transform: scale(1); opacity:.92; } 50% { transform: scale(1.055); opacity:1; } }
+    @keyframes blink { 0%,100% { opacity:.92; } 50% { opacity:.35; } }
+  ]]></style>
+
+  <symbol id="ic-attacker" viewBox="0 0 120 120">
+    <path d="M29 67c5-24 17-39 31-47 14 8 26 23 31 47" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M40 69c1-16 9-28 20-34 11 6 19 18 20 34" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+    <rect x="28" y="65" width="64" height="32" rx="7" fill="none" stroke="currentColor" stroke-width="5"/>
+    <circle cx="60" cy="81" r="9" fill="none" stroke="currentColor" stroke-width="4"/>
+    <path d="M60 74v14M53 81h14" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" opacity=".75"/>
+  </symbol>
+  <symbol id="ic-framework" viewBox="0 0 120 120">
+    <rect x="24" y="24" width="72" height="72" rx="18" fill="none" stroke="currentColor" stroke-width="5"/>
+    <circle cx="60" cy="60" r="13" fill="none" stroke="currentColor" stroke-width="5"/>
+    <circle cx="35" cy="35" r="7" fill="currentColor"/><circle cx="85" cy="35" r="7" fill="currentColor"/>
+    <circle cx="35" cy="85" r="7" fill="currentColor"/><circle cx="85" cy="85" r="7" fill="currentColor"/>
+    <path d="M42 39l10 10M78 39L68 49M42 81l10-10M78 81L68 71" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-bot" viewBox="0 0 120 120">
+    <rect x="27" y="36" width="66" height="52" rx="14" fill="none" stroke="currentColor" stroke-width="5"/>
+    <path d="M60 26v10M46 26h28" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="48" cy="60" r="6" fill="currentColor"/><circle cx="72" cy="60" r="6" fill="currentColor"/>
+    <path d="M47 77h26" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+    <rect x="77" y="20" width="32" height="24" rx="6" fill="currentColor" opacity=".25"/>
+    <text x="93" y="37" text-anchor="middle" font-family="Inter,Segoe UI,Arial" font-size="13" font-weight="900" fill="currentColor">PK</text>
+  </symbol>
+  <symbol id="ic-target" viewBox="0 0 120 120">
+    <circle cx="60" cy="60" r="36" fill="none" stroke="currentColor" stroke-width="5"/>
+    <circle cx="60" cy="60" r="22" fill="none" stroke="currentColor" stroke-width="4" opacity=".85"/>
+    <circle cx="60" cy="60" r="7" fill="currentColor"/>
+    <path d="M60 20v16M60 84v16M20 60h16M84 60h16" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-gate" viewBox="0 0 120 120">
+    <path d="M29 96V46c0-18 14-31 31-31s31 13 31 31v50" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+    <rect x="23" y="47" width="74" height="51" rx="10" fill="none" stroke="currentColor" stroke-width="5"/>
+    <circle cx="60" cy="70" r="8" fill="currentColor"/>
+    <path d="M60 78v12" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-policy" viewBox="0 0 120 120">
+    <path d="M60 18l33 12v25c0 24-13 41-33 49-20-8-33-25-33-49V30z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M43 61l11 12 25-29" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="ic-server" viewBox="0 0 120 120">
+    <rect x="25" y="24" width="70" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="5"/>
+    <rect x="25" y="51" width="70" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="5"/>
+    <rect x="25" y="78" width="70" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="5"/>
+    <circle cx="38" cy="33" r="3.5" fill="currentColor"/><circle cx="49" cy="33" r="3.5" fill="currentColor"/>
+    <circle cx="38" cy="60" r="3.5" fill="currentColor"/><circle cx="49" cy="60" r="3.5" fill="currentColor"/>
+    <circle cx="38" cy="87" r="3.5" fill="currentColor"/><circle cx="49" cy="87" r="3.5" fill="currentColor"/>
+    <path d="M66 33h17M66 60h17M66 87h17" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-pivot" viewBox="0 0 120 120">
+    <circle cx="35" cy="61" r="11" fill="none" stroke="currentColor" stroke-width="5"/>
+    <circle cx="77" cy="37" r="9" fill="none" stroke="currentColor" stroke-width="5"/>
+    <circle cx="77" cy="86" r="9" fill="none" stroke="currentColor" stroke-width="5"/>
+    <path d="M45 56l23-14M45 67l23 14" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-eye" viewBox="0 0 120 120">
+    <path d="M18 60s16-28 42-28 42 28 42 28-16 28-42 28-42-28-42-28z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
+    <circle cx="60" cy="60" r="14" fill="none" stroke="currentColor" stroke-width="5"/>
+  </symbol>
+  <symbol id="ic-globe" viewBox="0 0 120 120">
+    <circle cx="60" cy="60" r="34" fill="none" stroke="currentColor" stroke-width="5"/>
+    <path d="M26 60h68M60 26c12 12 18 24 18 34s-6 22-18 34M60 26C48 38 42 50 42 60s6 22 18 34" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-cross" viewBox="0 0 120 120">
+    <circle cx="60" cy="60" r="42" fill="none" stroke="currentColor" stroke-width="7"/>
+    <path d="M43 43l34 34M77 43L43 77" stroke="currentColor" stroke-width="9" stroke-linecap="round"/>
+  </symbol>
+</defs>
+
+<rect width="1920" height="1080" fill="url(#bg)"/>
+<rect width="1920" height="1080" fill="url(#halo)"/>
+<rect width="1920" height="1080" fill="url(#grid)" opacity="0.75"/>
+<g id="header">
+  <rect x="70" y="48" width="1780" height="174" rx="34" fill="url(#headerGrad)" stroke="#8dffbe" stroke-opacity="0.45" stroke-width="2.5" filter="url(#softShadow)"/>
+  <rect x="96" y="72" width="118" height="98" rx="26" fill="#071a31" stroke="#8dffbe" stroke-opacity="0.75" stroke-width="3"/>
+  <text x="155" y="112.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="38" font-weight="900" fill="#ffffff" >
+  <tspan x="155" y="112.0">GF</tspan>
+</text>
+  <text x="155" y="148.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="800" fill="#b8dbff" letter-spacing="2">
+  <tspan x="155" y="148.0">MODULE</tspan>
+</text>
+  <text x="248" y="91" text-anchor="start" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23" font-weight="750" letter-spacing="4" fill="#badcff">CYBER TRAINING INTERFACE</text>
+  <text x="248" y="133" text-anchor="start" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="42" font-weight="900" fill="#ffffff">Geofencing Access Control</text>
+  <text x="248" y="171" text-anchor="start" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="25" font-weight="800" fill="#8dffbe">Allowed Access</text>
+  <rect x="1180" y="80" width="620" height="104" rx="26" fill="#041223" stroke="#244967" stroke-width="2"/>
+  <text x="1490" y="117.5" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" fill="#dff3ff" >
+  <tspan x="1490" y="117.5">Approved lanes converge →</tspan>
+  <tspan x="1490" y="146.5">Policy Engine → Target: PK</tspan>
+</text>
+</g>
+<g>
+  <rect x="130" y="235" width="1660" height="52" rx="26.0" fill="#071e19" stroke="#287254" stroke-width="2"/>
+  <text x="960.0" y="261.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" fill="#e6fff1" >
+  <tspan x="960.0" y="261.0">Clean flow view: three approved access lanes converge into one policy engine before the protected website is served</tspan>
+</text>
+</g>
+<g class="card">
+  <rect x="115" y="302" width="430" height="145" rx="24" fill="url(#cardGreen)" stroke="#8dffbe" stroke-width="2.8"/>
+  <circle cx="330.0" cy="342" r="36" fill="#8dffbe" opacity="0.10"/>
+  <use href="#ic-globe" x="300.0" y="314" width="60" height="60" style="color:#8dffbe"/>
+  <text x="330.0" y="392.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23" font-weight="900" fill="#ffffff" >
+  <tspan x="330.0" y="392.0">(a) All PK IPs</tspan>
+</text>
+  <text x="330.0" y="424.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="720" fill="#d9eaf8" >
+  <tspan x="330.0" y="424.0">Public Pakistani-visible traffic</tspan>
+</text>
+</g>
+<g class="card">
+  <rect x="115" y="477" width="430" height="145" rx="24" fill="url(#cardBlue)" stroke="#7ee7ff" stroke-width="2.8"/>
+  <circle cx="330.0" cy="517" r="36" fill="#7ee7ff" opacity="0.10"/>
+  <use href="#ic-framework" x="300.0" y="489" width="60" height="60" style="color:#7ee7ff"/>
+  <text x="330.0" y="567.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23" font-weight="900" fill="#ffffff" >
+  <tspan x="330.0" y="567.0">(b) MOFA + VPN</tspan>
+</text>
+  <text x="330.0" y="599.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="720" fill="#d9eaf8" >
+  <tspan x="330.0" y="599.0">Higher-trust routed connectivity</tspan>
+</text>
+</g>
+<g class="card">
+  <rect x="115" y="652" width="430" height="145" rx="24" fill="url(#cardGold)" stroke="#ffe674" stroke-width="2.8"/>
+  <circle cx="330.0" cy="692" r="36" fill="#ffe674" opacity="0.10"/>
+  <use href="#ic-policy" x="300.0" y="664" width="60" height="60" style="color:#ffe674"/>
+  <text x="330.0" y="742.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23" font-weight="900" fill="#ffffff" >
+  <tspan x="330.0" y="742.0">(c) PK:UNO</tspan>
+</text>
+  <text x="330.0" y="774.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="720" fill="#d9eaf8" >
+  <tspan x="330.0" y="774.0">Special approved exception path</tspan>
+</text>
+</g>
+<g class="card">
+  <rect x="760" y="395" width="405" height="285" rx="28" fill="url(#cardPurple)" stroke="#b691ff" stroke-width="3"/>
+  <circle cx="962.5" cy="483" r="68" fill="#b691ff" opacity="0.10"/>
+  <use href="#ic-policy" x="914.5" y="437.0" width="96" height="96" style="color:#b691ff"/>
+  <text x="962.5" y="553.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="30" font-weight="900" fill="#ffffff" >
+  <tspan x="962.5" y="553.0">Policy Engine</tspan>
+</text>
+  <text x="962.5" y="590.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#d9eaf8" >
+  <tspan x="962.5" y="590.0">Validates route category,</tspan>
+  <tspan x="962.5" y="613.0">trust level, policy match,</tspan>
+  <tspan x="962.5" y="636.0">then records decision</tspan>
+</text>
+  <g>
+  <rect x="784" y="632" width="357" height="32" rx="16.0" fill="#061426" stroke="#b691ff" stroke-width="2"/>
+  <text x="962.5" y="648.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="900" fill="#b691ff" >
+  <tspan x="962.5" y="648.0">ALLOW + LOG</tspan>
+</text>
+</g>
+</g>
+<g class="card">
+  <rect x="1375" y="395" width="410" height="285" rx="28" fill="url(#cardGreen)" stroke="#8dffbe" stroke-width="3"/>
+  <circle cx="1580.0" cy="483" r="68" fill="#8dffbe" opacity="0.10"/>
+  <use href="#ic-target" x="1532.0" y="437.0" width="96" height="96" style="color:#8dffbe"/>
+  <text x="1580.0" y="537.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28" font-weight="900" fill="#ffffff" >
+  <tspan x="1580.0" y="537.0">Target: PK</tspan>
+  <tspan x="1580.0" y="569.0">POF.PK served</tspan>
+</text>
+  <text x="1580.0" y="590.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#d9eaf8" >
+  <tspan x="1580.0" y="590.0">Protected website is</tspan>
+  <tspan x="1580.0" y="613.0">served only after</tspan>
+  <tspan x="1580.0" y="636.0">governed approval</tspan>
+</text>
+  <g>
+  <rect x="1399" y="632" width="362" height="32" rx="16.0" fill="#061426" stroke="#8dffbe" stroke-width="2"/>
+  <text x="1580.0" y="648.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="900" fill="#8dffbe" >
+  <tspan x="1580.0" y="648.0">PROTECTED SITE</tspan>
+</text>
+</g>
+</g>
+<path id="allow_r1" class="route" d="M 567 374 C 640 374, 650 430, 738 456" stroke="#8dffbe" marker-end="url(#arrowGreen)" opacity="0.92"/>
+<circle r="8" fill="#8dffbe" class="packetGreen">
+  <animateMotion dur="4.0s" begin="0s" repeatCount="indefinite" rotate="auto">
+    <mpath href="#allow_r1"/>
+  </animateMotion>
+</circle>
+<path id="allow_r2" class="route" d="M 567 549 C 640 549, 650 548, 738 548" stroke="#7ee7ff" marker-end="url(#arrowCyan)" opacity="0.92"/>
+<circle r="8" fill="#7ee7ff" class="packet">
+  <animateMotion dur="4.0s" begin=".4s" repeatCount="indefinite" rotate="auto">
+    <mpath href="#allow_r2"/>
+  </animateMotion>
+</circle>
+<path id="allow_r3" class="route" d="M 567 724 C 640 724, 650 660, 738 640" stroke="#ffe674" marker-end="url(#arrowGold)" opacity="0.92"/>
+<circle r="8" fill="#ffe674" class="packetGold">
+  <animateMotion dur="4.0s" begin=".8s" repeatCount="indefinite" rotate="auto">
+    <mpath href="#allow_r3"/>
+  </animateMotion>
+</circle>
+<path id="allow_r4" class="route" d="M 1193 540 C 1280 540, 1260 540, 1347 540" stroke="#8dffbe" marker-end="url(#arrowGreen)" opacity="0.92"/>
+<circle r="8" fill="#8dffbe" class="packetGreen">
+  <animateMotion dur="3.2s" begin="1.1s" repeatCount="indefinite" rotate="auto">
+    <mpath href="#allow_r4"/>
+  </animateMotion>
+</circle>
+<g class="card">
+  <rect x="120" y="805" width="800" height="175" rx="24" fill="url(#cardGreen)" stroke="#8dffbe" stroke-opacity="0.7" stroke-width="2.5"/>
+  <text x="520.0" y="843.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="900" fill="#ffffff" >
+  <tspan x="520.0" y="843.0">Trust note</tspan>
+</text>
+  <text x="520.0" y="874.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="720" fill="#d9eaf8" >
+  <tspan x="520.0" y="874.0">PK IPs satisfy geography. MOFA + VPN and PK:UNO add</tspan>
+  <tspan x="520.0" y="897.0">stronger route assurance. Every category remains</tspan>
+  <tspan x="520.0" y="920.0">checked, logged, and reviewable.</tspan>
+</text>
+</g>
+<g class="card">
+  <rect x="1000" y="805" width="800" height="175" rx="24" fill="url(#cardPurple)" stroke="#b691ff" stroke-opacity="0.7" stroke-width="2.5"/>
+  <text x="1400.0" y="843.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="900" fill="#ffffff" >
+  <tspan x="1400.0" y="843.0">Governance point</tspan>
+</text>
+  <text x="1400.0" y="885.5" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="720" fill="#d9eaf8" >
+  <tspan x="1400.0" y="885.5">The allow action is still a policy decision based on</tspan>
+  <tspan x="1400.0" y="908.5">route category, identity confidence, and logged evidence.</tspan>
+</text>
+</g>
+</svg>

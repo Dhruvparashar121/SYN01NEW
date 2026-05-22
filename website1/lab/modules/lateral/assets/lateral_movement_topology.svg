@@ -1,0 +1,356 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+<title id="title">Lateral Movement - Improved Iconic Neon SVG</title>
+<desc id="desc">Improved high-definition lateral movement training diagram with centered text boxes, icon zones, and exact animated packet path.</desc>
+
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#071a33"/>
+    <stop offset="55%" stop-color="#031120"/>
+    <stop offset="100%" stop-color="#020814"/>
+  </linearGradient>
+  <radialGradient id="halo" cx="50%" cy="32%" r="68%">
+    <stop offset="0%" stop-color="#1f8cff" stop-opacity="0.30"/>
+    <stop offset="55%" stop-color="#083e75" stop-opacity="0.13"/>
+    <stop offset="100%" stop-color="#020814" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#0b2545" stop-opacity="0.95"/>
+    <stop offset="58%" stop-color="#06192f" stop-opacity="0.95"/>
+    <stop offset="100%" stop-color="#0a1225" stop-opacity="0.98"/>
+  </linearGradient>
+  <linearGradient id="cardNavy" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#102b4f"/>
+    <stop offset="100%" stop-color="#07172a"/>
+  </linearGradient>
+  <linearGradient id="cardRed" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#4e1429"/>
+    <stop offset="100%" stop-color="#171224"/>
+  </linearGradient>
+  <linearGradient id="cardBlue" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#07345c"/>
+    <stop offset="100%" stop-color="#09172b"/>
+  </linearGradient>
+  <linearGradient id="cardGold" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#5b4211"/>
+    <stop offset="100%" stop-color="#161629"/>
+  </linearGradient>
+  <linearGradient id="cardGreen" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#0b4b38"/>
+    <stop offset="100%" stop-color="#07192a"/>
+  </linearGradient>
+  <linearGradient id="cardPurple" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#3c246b"/>
+    <stop offset="100%" stop-color="#07172a"/>
+  </linearGradient>
+  <filter id="softShadow" x="-20%" y="-20%" width="140%" height="160%">
+    <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000814" flood-opacity="0.58"/>
+  </filter>
+  <filter id="glowCyan" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="glowRed" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="glowGold" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="glowGreen" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+
+  <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+    <path d="M80 0H0V80" fill="none" stroke="#255178" stroke-width="1" stroke-opacity="0.13"/>
+  </pattern>
+  <marker id="arrowCyan" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#7ee7ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <marker id="arrowGold" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#ffe674" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <marker id="arrowGreen" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#8dffbe" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <marker id="arrowRed" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#ff8aa8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <style><![CDATA[
+    .route { fill:none; stroke-linecap:round; stroke-linejoin:round; stroke-width:5; stroke-dasharray:14 11; animation: dash 3.8s linear infinite; }
+    .routeSolid { fill:none; stroke-linecap:round; stroke-linejoin:round; stroke-width:5; }
+    .packet { filter:url(#glowCyan); opacity:.96; }
+    .packetGold { filter:url(#glowGold); opacity:.96; }
+    .packetRed { filter:url(#glowRed); opacity:.96; }
+    .packetGreen { filter:url(#glowGreen); opacity:.96; }
+    .float { animation: floatY 5.5s ease-in-out infinite; transform-box:fill-box; transform-origin:center; }
+    .pulse { animation: pulse 3.2s ease-in-out infinite; transform-box:fill-box; transform-origin:center; }
+    .blink { animation: blink 1.25s ease-in-out infinite; }
+    @keyframes dash { to { stroke-dashoffset: -110; } }
+    @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+    @keyframes pulse { 0%,100% { transform: scale(1); opacity:.92; } 50% { transform: scale(1.055); opacity:1; } }
+    @keyframes blink { 0%,100% { opacity:.92; } 50% { opacity:.35; } }
+  ]]></style>
+
+  <symbol id="ic-attacker" viewBox="0 0 120 120">
+    <path d="M29 67c5-24 17-39 31-47 14 8 26 23 31 47" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M40 69c1-16 9-28 20-34 11 6 19 18 20 34" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+    <rect x="28" y="65" width="64" height="32" rx="7" fill="none" stroke="currentColor" stroke-width="5"/>
+    <circle cx="60" cy="81" r="9" fill="none" stroke="currentColor" stroke-width="4"/>
+    <path d="M60 74v14M53 81h14" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" opacity=".75"/>
+  </symbol>
+  <symbol id="ic-framework" viewBox="0 0 120 120">
+    <rect x="24" y="24" width="72" height="72" rx="18" fill="none" stroke="currentColor" stroke-width="5"/>
+    <circle cx="60" cy="60" r="13" fill="none" stroke="currentColor" stroke-width="5"/>
+    <circle cx="35" cy="35" r="7" fill="currentColor"/><circle cx="85" cy="35" r="7" fill="currentColor"/>
+    <circle cx="35" cy="85" r="7" fill="currentColor"/><circle cx="85" cy="85" r="7" fill="currentColor"/>
+    <path d="M42 39l10 10M78 39L68 49M42 81l10-10M78 81L68 71" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-bot" viewBox="0 0 120 120">
+    <rect x="27" y="36" width="66" height="52" rx="14" fill="none" stroke="currentColor" stroke-width="5"/>
+    <path d="M60 26v10M46 26h28" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="48" cy="60" r="6" fill="currentColor"/><circle cx="72" cy="60" r="6" fill="currentColor"/>
+    <path d="M47 77h26" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+    <rect x="77" y="20" width="32" height="24" rx="6" fill="currentColor" opacity=".25"/>
+    <text x="93" y="37" text-anchor="middle" font-family="Inter,Segoe UI,Arial" font-size="13" font-weight="900" fill="currentColor">PK</text>
+  </symbol>
+  <symbol id="ic-target" viewBox="0 0 120 120">
+    <circle cx="60" cy="60" r="36" fill="none" stroke="currentColor" stroke-width="5"/>
+    <circle cx="60" cy="60" r="22" fill="none" stroke="currentColor" stroke-width="4" opacity=".85"/>
+    <circle cx="60" cy="60" r="7" fill="currentColor"/>
+    <path d="M60 20v16M60 84v16M20 60h16M84 60h16" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-gate" viewBox="0 0 120 120">
+    <path d="M29 96V46c0-18 14-31 31-31s31 13 31 31v50" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+    <rect x="23" y="47" width="74" height="51" rx="10" fill="none" stroke="currentColor" stroke-width="5"/>
+    <circle cx="60" cy="70" r="8" fill="currentColor"/>
+    <path d="M60 78v12" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-policy" viewBox="0 0 120 120">
+    <path d="M60 18l33 12v25c0 24-13 41-33 49-20-8-33-25-33-49V30z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M43 61l11 12 25-29" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="ic-server" viewBox="0 0 120 120">
+    <rect x="25" y="24" width="70" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="5"/>
+    <rect x="25" y="51" width="70" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="5"/>
+    <rect x="25" y="78" width="70" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="5"/>
+    <circle cx="38" cy="33" r="3.5" fill="currentColor"/><circle cx="49" cy="33" r="3.5" fill="currentColor"/>
+    <circle cx="38" cy="60" r="3.5" fill="currentColor"/><circle cx="49" cy="60" r="3.5" fill="currentColor"/>
+    <circle cx="38" cy="87" r="3.5" fill="currentColor"/><circle cx="49" cy="87" r="3.5" fill="currentColor"/>
+    <path d="M66 33h17M66 60h17M66 87h17" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-pivot" viewBox="0 0 120 120">
+    <circle cx="35" cy="61" r="11" fill="none" stroke="currentColor" stroke-width="5"/>
+    <circle cx="77" cy="37" r="9" fill="none" stroke="currentColor" stroke-width="5"/>
+    <circle cx="77" cy="86" r="9" fill="none" stroke="currentColor" stroke-width="5"/>
+    <path d="M45 56l23-14M45 67l23 14" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-eye" viewBox="0 0 120 120">
+    <path d="M18 60s16-28 42-28 42 28 42 28-16 28-42 28-42-28-42-28z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
+    <circle cx="60" cy="60" r="14" fill="none" stroke="currentColor" stroke-width="5"/>
+  </symbol>
+  <symbol id="ic-globe" viewBox="0 0 120 120">
+    <circle cx="60" cy="60" r="34" fill="none" stroke="currentColor" stroke-width="5"/>
+    <path d="M26 60h68M60 26c12 12 18 24 18 34s-6 22-18 34M60 26C48 38 42 50 42 60s6 22 18 34" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-cross" viewBox="0 0 120 120">
+    <circle cx="60" cy="60" r="42" fill="none" stroke="currentColor" stroke-width="7"/>
+    <path d="M43 43l34 34M77 43L43 77" stroke="currentColor" stroke-width="9" stroke-linecap="round"/>
+  </symbol>
+</defs>
+
+<rect width="1920" height="1080" fill="url(#bg)"/>
+<rect width="1920" height="1080" fill="url(#halo)"/>
+<rect width="1920" height="1080" fill="url(#grid)" opacity="0.75"/>
+<g id="header">
+  <rect x="70" y="48" width="1780" height="174" rx="34" fill="url(#headerGrad)" stroke="#7ee7ff" stroke-opacity="0.45" stroke-width="2.5" filter="url(#softShadow)"/>
+  <rect x="96" y="72" width="118" height="98" rx="26" fill="#071a31" stroke="#7ee7ff" stroke-opacity="0.75" stroke-width="3"/>
+  <text x="155" y="112.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="38" font-weight="900" fill="#ffffff" >
+  <tspan x="155" y="112.0">LM</tspan>
+</text>
+  <text x="155" y="148.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="800" fill="#b8dbff" letter-spacing="2">
+  <tspan x="155" y="148.0">MODULE</tspan>
+</text>
+  <text x="248" y="91" text-anchor="start" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23" font-weight="750" letter-spacing="4" fill="#badcff">CYBER TRAINING INTERFACE</text>
+  <text x="248" y="133" text-anchor="start" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="42" font-weight="900" fill="#ffffff">Lateral Movement Training Diagram</text>
+  <text x="248" y="171" text-anchor="start" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="25" font-weight="800" fill="#7ee7ff">Segmented Packet Learning Path</text>
+  <rect x="1180" y="80" width="620" height="104" rx="26" fill="#041223" stroke="#244967" stroke-width="2"/>
+  <text x="1490" y="117.5" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" fill="#dff3ff" >
+  <tspan x="1490" y="117.5">Red VLAN → White Team → DMZ →</tspan>
+  <tspan x="1490" y="146.5">Blue Pivot → Blue Webservers</tspan>
+</text>
+</g>
+<g class="card"><rect x="105" y="238" width="310" height="56" rx="18" fill="#061426" stroke="#ff8aa8" stroke-width="2.5"/><text x="260" y="256.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="900" fill="#ffffff" letter-spacing="1">
+  <tspan x="260" y="256.0">RED TEAM</tspan>
+  <tspan x="260" y="276.0">VLAN 30</tspan>
+</text></g>
+<g class="card"><rect x="455" y="238" width="310" height="56" rx="18" fill="#061426" stroke="#7ee7ff" stroke-width="2.5"/><text x="610" y="256.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="900" fill="#ffffff" letter-spacing="1">
+  <tspan x="610" y="256.0">WHITE TEAM</tspan>
+  <tspan x="610" y="276.0">VLAN 10</tspan>
+</text></g>
+<g class="card"><rect x="805" y="238" width="310" height="56" rx="18" fill="#061426" stroke="#ffe674" stroke-width="2.5"/><text x="960" y="256.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="900" fill="#ffffff" letter-spacing="1">
+  <tspan x="960" y="256.0">DMZ</tspan>
+  <tspan x="960" y="276.0">VLAN 40</tspan>
+</text></g>
+<g class="card"><rect x="1155" y="238" width="310" height="56" rx="18" fill="#061426" stroke="#b691ff" stroke-width="2.5"/><text x="1310" y="256.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="900" fill="#ffffff" letter-spacing="1">
+  <tspan x="1310" y="256.0">BLUE TEAM</tspan>
+  <tspan x="1310" y="276.0">VLAN 20</tspan>
+</text></g>
+<g class="card"><rect x="1505" y="238" width="310" height="56" rx="18" fill="#061426" stroke="#8dffbe" stroke-width="2.5"/><text x="1660" y="256.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="900" fill="#ffffff" letter-spacing="1">
+  <tspan x="1660" y="256.0">BLUE SERVERS</tspan>
+  <tspan x="1660" y="276.0">VLAN 20</tspan>
+</text></g>
+<g class="card">
+  <rect x="95" y="335" width="300" height="335" rx="28" fill="url(#cardRed)" stroke="#ff6f97" stroke-width="3"/>
+  <circle cx="245.0" cy="423" r="68" fill="#ff8aa8" opacity="0.10"/>
+  <use href="#ic-attacker" x="199.0" y="377.0" width="92" height="92" style="color:#ff8aa8"/>
+  <text x="245.0" y="500.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="29" font-weight="900" fill="#ffffff" >
+  <tspan x="245.0" y="500.0">Attacker</tspan>
+</text>
+  <text x="245.0" y="552.7" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="19" font-weight="700" fill="#d9eaf8" >
+  <tspan x="245.0" y="552.7">30.0.30.17</tspan>
+  <tspan x="245.0" y="577.0">Red VLAN 30</tspan>
+  <tspan x="245.0" y="601.3">Initial foothold point</tspan>
+</text>
+  <g>
+  <rect x="119" y="622" width="252" height="32" rx="16.0" fill="#061426" stroke="#ff6f97" stroke-width="2"/>
+  <text x="245.0" y="638.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="900" fill="#ff8aa8" >
+  <tspan x="245.0" y="638.0">RED TEAM</tspan>
+</text>
+</g>
+</g>
+<g class="card">
+  <rect x="450" y="335" width="300" height="335" rx="28" fill="url(#cardBlue)" stroke="#7ee7ff" stroke-width="3"/>
+  <circle cx="600.0" cy="423" r="68" fill="#7ee7ff" opacity="0.10"/>
+  <use href="#ic-eye" x="554.0" y="377.0" width="92" height="92" style="color:#7ee7ff"/>
+  <text x="600.0" y="500.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="29" font-weight="900" fill="#ffffff" >
+  <tspan x="600.0" y="500.0">White Team</tspan>
+</text>
+  <text x="600.0" y="552.7" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="19" font-weight="700" fill="#d9eaf8" >
+  <tspan x="600.0" y="552.7">10.0.10.26</tspan>
+  <tspan x="600.0" y="577.0">Control / Observer</tspan>
+  <tspan x="600.0" y="601.3">visibility layer</tspan>
+</text>
+  <g>
+  <rect x="474" y="622" width="252" height="32" rx="16.0" fill="#061426" stroke="#7ee7ff" stroke-width="2"/>
+  <text x="600.0" y="638.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="900" fill="#7ee7ff" >
+  <tspan x="600.0" y="638.0">WHITE VLAN</tspan>
+</text>
+</g>
+</g>
+<g class="card">
+  <rect x="805" y="335" width="300" height="335" rx="28" fill="url(#cardGold)" stroke="#ffe674" stroke-width="3"/>
+  <circle cx="955.0" cy="423" r="68" fill="#ffe674" opacity="0.10"/>
+  <use href="#ic-server" x="909.0" y="377.0" width="92" height="92" style="color:#ffe674"/>
+  <text x="955.0" y="500.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="29" font-weight="900" fill="#ffffff" >
+  <tspan x="955.0" y="500.0">DMZ Host</tspan>
+</text>
+  <text x="955.0" y="552.7" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="19" font-weight="700" fill="#d9eaf8" >
+  <tspan x="955.0" y="552.7">10.0.40.106</tspan>
+  <tspan x="955.0" y="577.0">DMZ VLAN 40</tspan>
+  <tspan x="955.0" y="601.3">intermediate exposure</tspan>
+</text>
+  <g>
+  <rect x="829" y="622" width="252" height="32" rx="16.0" fill="#061426" stroke="#ffe674" stroke-width="2"/>
+  <text x="955.0" y="638.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="900" fill="#ffe674" >
+  <tspan x="955.0" y="638.0">DMZ</tspan>
+</text>
+</g>
+</g>
+<g class="card">
+  <rect x="1160" y="335" width="300" height="335" rx="28" fill="url(#cardPurple)" stroke="#b691ff" stroke-width="3"/>
+  <circle cx="1310.0" cy="423" r="68" fill="#b691ff" opacity="0.10"/>
+  <use href="#ic-pivot" x="1264.0" y="377.0" width="92" height="92" style="color:#b691ff"/>
+  <text x="1310.0" y="500.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="29" font-weight="900" fill="#ffffff" >
+  <tspan x="1310.0" y="500.0">Pivot Host</tspan>
+</text>
+  <text x="1310.0" y="552.7" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="19" font-weight="700" fill="#d9eaf8" >
+  <tspan x="1310.0" y="552.7">10.0.20.112</tspan>
+  <tspan x="1310.0" y="577.0">Blue VLAN 20</tspan>
+  <tspan x="1310.0" y="601.3">route into internal net</tspan>
+</text>
+  <g>
+  <rect x="1184" y="622" width="252" height="32" rx="16.0" fill="#061426" stroke="#b691ff" stroke-width="2"/>
+  <text x="1310.0" y="638.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="900" fill="#b691ff" >
+  <tspan x="1310.0" y="638.0">PIVOT</tspan>
+</text>
+</g>
+</g>
+<g class="card">
+  <rect x="1515" y="335" width="300" height="315" rx="28" fill="url(#cardGreen)" stroke="#8dffbe" stroke-width="3"/>
+  <circle cx="1665" cy="417" r="62" fill="#8dffbe" opacity="0.10"/>
+  <use href="#ic-server" x="1619" y="369" width="92" height="92" style="color:#8dffbe"/>
+  <text x="1665" y="467.5" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="27" font-weight="900" fill="#ffffff" >
+  <tspan x="1665" y="467.5">Blue Team</tspan>
+  <tspan x="1665" y="498.5">Webservers</tspan>
+</text>
+  <rect x="1547" y="529" width="236" height="38" rx="12" fill="#061426" stroke="#8dffbe" stroke-opacity="0.55" stroke-width="1.6"/>
+  <text x="1665" y="548.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="850" fill="#dfffee" >
+  <tspan x="1665" y="548.0">Webserver 1  •  10.0.20.20</tspan>
+</text>
+  <rect x="1547" y="577" width="236" height="38" rx="12" fill="#061426" stroke="#8dffbe" stroke-opacity="0.55" stroke-width="1.6"/>
+  <text x="1665" y="596.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="850" fill="#dfffee" >
+  <tspan x="1665" y="596.0">Webserver 2  •  10.0.20.25</tspan>
+</text>
+  <g>
+  <rect x="1539" y="622" width="252" height="32" rx="16.0" fill="#061426" stroke="#8dffbe" stroke-width="2"/>
+  <text x="1665.0" y="638.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="900" fill="#8dffbe" >
+  <tspan x="1665.0" y="638.0">BLUE VLAN 20</tspan>
+</text>
+</g>
+</g>
+<path id="lm_r1" class="route" d="M 417 492 C 467 492, 378 492, 428 492" stroke="#ff8aa8" marker-end="url(#arrowRed)" opacity="0.92"/>
+<circle r="8" fill="#ff8aa8" class="packetRed">
+  <animateMotion dur="3.1s" begin="0.0s" repeatCount="indefinite" rotate="auto">
+    <mpath href="#lm_r1"/>
+  </animateMotion>
+</circle>
+<path id="lm_r2" class="route" d="M 772 492 C 822 492, 733 492, 783 492" stroke="#7ee7ff" marker-end="url(#arrowCyan)" opacity="0.92"/>
+<circle r="8" fill="#7ee7ff" class="packet">
+  <animateMotion dur="3.1s" begin="0.35s" repeatCount="indefinite" rotate="auto">
+    <mpath href="#lm_r2"/>
+  </animateMotion>
+</circle>
+<path id="lm_r3" class="route" d="M 1127 492 C 1177 492, 1088 492, 1138 492" stroke="#ffe674" marker-end="url(#arrowGold)" opacity="0.92"/>
+<circle r="8" fill="#ffe674" class="packetGold">
+  <animateMotion dur="3.1s" begin="0.7s" repeatCount="indefinite" rotate="auto">
+    <mpath href="#lm_r3"/>
+  </animateMotion>
+</circle>
+<path id="lm_r4" class="route" d="M 1482 492 C 1532 492, 1443 492, 1493 492" stroke="#b691ff" marker-end="url(#arrowCyan)" opacity="0.92"/>
+<circle r="8" fill="#b691ff" class="packet">
+  <animateMotion dur="3.1s" begin="1.0499999999999998s" repeatCount="indefinite" rotate="auto">
+    <mpath href="#lm_r4"/>
+  </animateMotion>
+</circle>
+<g class="card">
+  <rect x="90" y="710" width="1740" height="122" rx="30" fill="url(#cardNavy)" stroke="#7ee7ff" stroke-width="2.8"/>
+  <text x="960" y="745.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="950" fill="#ffffff" >
+  <tspan x="960" y="745.0">Packet learning path:</tspan>
+</text>
+  <text x="960" y="793.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="850" fill="#dff3ff" >
+  <tspan x="960" y="793.0">Red Team VLAN 30 → White Team VLAN 10 → DMZ VLAN 40 → Blue Team VLAN 20 pivot → Blue Team webservers</tspan>
+</text>
+</g>
+<g class="card">
+  <rect x="120" y="865" width="390" height="120" rx="24" fill="url(#cardRed)" stroke="#ff8aa8" stroke-opacity="0.7" stroke-width="2.5"/>
+  <text x="315.0" y="903.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="900" fill="#ffffff" >
+  <tspan x="315.0" y="903.0">Red team side</tspan>
+</text>
+  <text x="315.0" y="946.8" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="720" fill="#d9eaf8" >
+  <tspan x="315.0" y="946.8">Originating host and</tspan>
+  <tspan x="315.0" y="967.2">first packet source.</tspan>
+</text>
+</g>
+<g class="card">
+  <rect x="545" y="865" width="390" height="120" rx="24" fill="url(#cardBlue)" stroke="#7ee7ff" stroke-opacity="0.7" stroke-width="2.5"/>
+  <text x="740.0" y="903.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="900" fill="#ffffff" >
+  <tspan x="740.0" y="903.0">Observation layer</tspan>
+</text>
+  <text x="740.0" y="946.8" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="720" fill="#d9eaf8" >
+  <tspan x="740.0" y="946.8">White Team system monitors</tspan>
+  <tspan x="740.0" y="967.2">the learning path.</tspan>
+</text>
+</g>
+<g class="card">
+  <rect x="970" y="865" width="390" height="120" rx="24" fill="url(#cardPurple)" stroke="#b691ff" stroke-opacity="0.7" stroke-width="2.5"/>
+  <text x="1165.0" y="903.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="900" fill="#ffffff" >
+  <tspan x="1165.0" y="903.0">Pivot concept</tspan>
+</text>
+  <text x="1165.0" y="946.8" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="720" fill="#d9eaf8" >
+  <tspan x="1165.0" y="946.8">Pivot host bridges reachability</tspan>
+  <tspan x="1165.0" y="967.2">into Blue VLAN.</tspan>
+</text>
+</g>
+<g class="card">
+  <rect x="1395" y="865" width="390" height="120" rx="24" fill="url(#cardGreen)" stroke="#8dffbe" stroke-opacity="0.7" stroke-width="2.5"/>
+  <text x="1590.0" y="903.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="900" fill="#ffffff" >
+  <tspan x="1590.0" y="903.0">Final assets</tspan>
+</text>
+  <text x="1590.0" y="946.8" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="720" fill="#d9eaf8" >
+  <tspan x="1590.0" y="946.8">Both webservers remain</tspan>
+  <tspan x="1590.0" y="967.2">inside the Blue segment.</tspan>
+</text>
+</g>
+</svg>

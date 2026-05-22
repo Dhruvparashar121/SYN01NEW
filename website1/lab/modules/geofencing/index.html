@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Geofencing Training Module | Clean Animated UI</title>
+<link href="css/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="bg-orb orb-1"></div>
+<div class="bg-orb orb-2"></div>
+<div class="bg-grid"></div>
+<header class="topbar">
+<div class="brand-wrap">
+<div class="brand-mark">GF</div>
+<div>
+<p class="eyebrow">Cyber Training Interface</p>
+<h1>Geofencing Access Control</h1>
+</div>
+</div>
+<nav aria-label="Primary" class="nav">
+<a href="#overview">Overview</a>
+<a href="#studio">Diagram Studio</a>
+<a href="#engine">Decision Engine</a>
+<a href="#defender">Defender View</a>
+
+<a href="#quiz">Quiz</a>
+</nav>
+<a class="portal-link" href="../../index.html">← Training Modules</a></header>
+<main class="shell">
+<!-- <section class="hero" id="overview">
+<div class="hero-copy panel reveal show">
+<span class="tagline">Training module only • Professional offline learning UI</span>
+<h2>Clear, uncluttered flowcharts for <span class="green">allowed access</span>, <span class="red">denied access</span>, and <span class="yellow">bypass-risk access</span>.</h2>
+<p class="lead">
+          This training interface explains how a geofenced Pakistani website such as <b>POF.PK</b> may allow or deny requests. The diagrams below are rebuilt with cleaner spacing, exact arrow directions, and animated packet-flow lines that do <b>not</b> overlap text.
+        </p>
+<div class="hero-actions">
+<button class="btn primary" data-scroll="#studio">Open clean animated diagrams</button>
+<button class="btn secondary" data-scroll="#engine">See decision engine</button>
+</div>
+<div class="stat-grid">
+<article>
+<strong>01</strong>
+<span>Risk path: traffic looks Pakistani only at the final visible exit.</span>
+</article>
+<article>
+<strong>02</strong>
+<span>Direct non-PK traffic is denied by the website geofence.</span>
+</article>
+<article>
+<strong>03</strong>
+<span>Public PK, MOFA VPN, and PK:UNO are shown as distinct allow paths.</span>
+</article>
+</div>
+</div>
+<div class="hero-side panel reveal">
+<div class="panel-topline">
+<span class="status-pill"><span class="live-dot"></span> Live access telemetry</span>
+<span class="tiny-muted">policy-stream.geo</span>
+</div>
+<div class="overview-diagram">
+<div class="mini-node attacker-mini">External</div>
+<div class="mini-link link-blue"><span></span><span></span><span></span></div>
+<div class="mini-node relay-mini">Relay / .PK IP</div>
+<div class="mini-link link-green"><span></span><span></span><span></span></div>
+<div class="mini-node target-mini">POF.PK</div>
+</div>
+<div class="signal-cards">
+<article class="signal-card success">
+<label>Allow Conditions</label>
+<strong>Visible PK source + trusted path</strong>
+<p>Possible through public PK IPs, MOFA connectivity with VPN, or PK:UNO if policy rules match.</p>
+</article>
+<article class="signal-card danger">
+<label>Deny Conditions</label>
+<strong>Direct non-PK source</strong>
+<p>Blocked by geofence and logged with source country, ASN, and reason code.</p>
+</article>
+<article class="signal-card warning">
+<label>Risk Conditions</label>
+<strong>PK-looking relay from anonymity path</strong>
+<p>Requires more validation than country-only IP geolocation.</p>
+</article>
+</div>
+<div class="terminal">
+<div class="terminal-bar"><span></span><span></span><span></span><em>geo-decision.log</em></div>
+<pre id="terminalText"></pre>
+</div>
+</div>
+</section> -->
+<!-- <section class="three-cards reveal">
+<article class="panel info-card">
+<div class="icon blue">IP</div>
+<h3>IP Geofencing</h3>
+<p>Country-level filtering is quick and scalable, but by itself it is <b>not foolproof</b>. The target only sees the visible source IP.</p>
+</article>
+<article class="panel info-card">
+<div class="icon green">TR</div>
+<h3>Trusted Routes</h3>
+<p>Organization-approved paths such as <b>MOFA connectivity with VPN</b> and <b>PK:UNO</b> provide stronger trust because they are tied to defined routes and governance.</p>
+</article>
+<article class="panel info-card">
+<div class="icon purple">SOC</div>
+<h3>Defender Objective</h3>
+<p>Identify who should be allowed, who must be denied, and which local-looking requests require extra scrutiny because they may hide upstream origin.</p>
+</article>
+</section> -->
+<section class="section-block" id="studio">
+<div class="section-head reveal">
+<p class="eyebrow"></p>
+<h2>GEOFENCING</h2>
+<p>Geofencing is a technology that creates a virtual boundary around a real-world geographic area</p>
+</div>
+<div aria-label="Scenario tabs" class="tabs reveal" role="tablist">
+<button class="tab active" data-scenario="scenario1">Scenario 1 • Bypass-risk relay path</button>
+<button class="tab" data-scenario="scenario2">Scenario 2 • Direct access denied</button>
+<button class="tab" data-scenario="scenario3">Scenario 3 • Allowed PK access</button>
+</div>
+<section class="scenario panel active reveal" id="scenario1">
+<div class="scenario-top">
+<div>
+<p class="eyebrow">Animated Flowchart 01</p>
+<h3>Attacker → Anonymity Framework → Zombie/Bot .PK IP → Target: PK (POF.PK)</h3>
+</div>
+<span class="badge warn">Bypass-risk example</span>
+</div>
+<div class="svg-wrap premium"><img alt="scenario1 diagram" class="scenario-svg-img" src="assets/geofencing_flow_01_bypass_risk.svg"/></div>
+<div class="explain-grid">
+<article class="explain-card">
+<h4>What it means</h4>
+<p>The request is not coming directly from the real attacker to the site. Instead, the traffic is passed through an anonymity path and exits through a Pakistani-visible node.</p>
+</article>
+<article class="explain-card">
+<h4>Why it is risky</h4>
+<p>If the site trusts only the last visible source IP, it may treat the traffic as local even though the real operator is somewhere else.</p>
+</article>
+<article class="explain-card">
+<h4>Defender lesson</h4>
+<p>Use geography as only one signal. Combine it with route trust, ASN intelligence, proxy detection, device trust, identity, and behavior monitoring.</p>
+</article>
+</div>
+</section>
+<section class="scenario panel reveal" id="scenario2">
+<div class="scenario-top">
+<div>
+<p class="eyebrow">Animated Flowchart 02</p>
+<h3>Attacker --x--&gt; Target: PK (POF.PK) • Website geofenced, access denied</h3>
+</div>
+<span class="badge danger">Access denied</span>
+</div>
+<div class="svg-wrap premium"><img alt="scenario2 diagram" class="scenario-svg-img" src="assets/geofencing_flow_02_access_denied.svg"/></div>
+<div class="explain-grid">
+<article class="explain-card">
+<h4>What it means</h4>
+<p>This is the clean baseline case. A direct request arrives from outside the approved geographic boundary and is evaluated openly by the geofence.</p>
+</article>
+<article class="explain-card">
+<h4>Why the site denies it</h4>
+<p>The visible source does not satisfy the PK access rule and does not match any special trusted path such as MOFA connectivity with VPN or PK:UNO.</p>
+</article>
+<article class="explain-card">
+<h4>Defender lesson</h4>
+<p>Denied traffic is still useful telemetry. Repeated denials may indicate probing, brute-force attempts, or an adversary mapping restricted services.</p>
+</article>
+</div>
+</section>
+<section class="scenario panel reveal" id="scenario3">
+<div class="scenario-top">
+<div>
+<p class="eyebrow">Animated Flowchart 03</p>
+<h3>Allowed access: Target: PK (POF.PK) • (a) All PK IPs • (b) MOFA connectivity with VPN • (c) PK:UNO</h3>
+</div>
+<span class="badge success">Allowed access</span>
+</div>
+<div class="svg-wrap premium"><img alt="scenario3 diagram" class="scenario-svg-img" src="assets/geofencing_flow_03_allowed_access.svg"/></div>
+<div class="explain-grid">
+<article class="explain-card">
+<h4>What it means</h4>
+<p>Three distinct routes can be allowed: public PK IPs, MOFA connectivity with VPN, and PK:UNO. Each one is a separate policy category.</p>
+</article>
+<article class="explain-card">
+<h4>Why the paths differ</h4>
+<p>All PK IPs satisfy geography, while MOFA VPN and PK:UNO provide stronger trust because they are tied to specific approved routes and governance.</p>
+</article>
+<article class="explain-card">
+<h4>Defender lesson</h4>
+<p>Even allow paths should be documented with owner, purpose, and review cycle so exceptions do not become unmanaged long-term openings.</p>
+</article>
+</div>
+</section>
+</section>
+<section class="section-block" id="engine">
+<div class="section-head reveal">
+<p class="eyebrow">Additional Supporting Diagram</p>
+<h2>GEOFENCING DECISION ENGINE</h2>
+<p>A professional website should not rely on geography alone. This section summarizes the layered decision process.</p>
+</div>
+<div class="panel engine-panel reveal">
+<div class="engine-strip">
+<div class="engine-step"><span>1</span><h4>Capture</h4><p>Source IP, request, time, session.</p></div>
+<div class="engine-connector"></div>
+<div class="engine-step"><span>2</span><h4>Geo + ASN</h4><p>Country, provider, ASN, proxy/VPN hints.</p></div>
+<div class="engine-connector"></div>
+<div class="engine-step"><span>3</span><h4>Trust Route</h4><p>MOFA VPN, PK:UNO, or public PK category.</p></div>
+<div class="engine-connector"></div>
+<div class="engine-step"><span>4</span><h4>Risk Score</h4><p>Behavior, anomalies, and rate signals.</p></div>
+<div class="engine-connector"></div>
+<div class="engine-step"><span>5</span><h4>Decision</h4><p>Allow, deny, or alert with audit logs.</p></div>
+<div class="engine-packet"></div>
+</div>
+<div class="engine-notes">
+<article><h4>Why this matters</h4><p>A request that appears Pakistani may still be suspicious. Better decisions come from combining technical signals rather than trusting one field alone.</p></article>
+<article><h4>Best practice</h4><p>Every rule should return a reason code so analysts can explain why the access was allowed, denied, or escalated.</p></article>
+<article><h4>Governance</h4><p>Special routes like MOFA connectivity with VPN and PK:UNO should be reviewed periodically so outdated exceptions do not become long-term weaknesses.</p></article>
+</div>
+</div>
+</section>
+<section class="section-block" id="defender">
+<div class="section-head reveal">
+<p class="eyebrow">Defender / SOC Understanding</p>
+<h2>OPERATIONAL SCENARIO</h2>
+</div>
+<div class="defender-grid reveal">
+<article class="panel defender-card success-card">
+<h3>Allowed traffic indicators</h3>
+<ul>
+<li>Visible source matches a PK access category or trusted route.</li>
+<li>MOFA VPN or PK:UNO route satisfies policy conditions.</li>
+<li>Behavior is normal for the user, device, and service.</li>
+<li>Allow decision is fully logged and reviewable.</li>
+</ul>
+</article>
+<article class="panel defender-card danger-card">
+<h3>Denied traffic indicators</h3>
+<ul>
+<li>Request comes directly from non-approved geography.</li>
+<li>No trusted exception route is present.</li>
+<li>Site returns a deny page and stores the reason.</li>
+<li>Repeated denials can indicate reconnaissance.</li>
+</ul>
+</article>
+<article class="panel defender-card warning-card">
+<h3>Bypass-risk indicators</h3>
+<ul>
+<li>Visible source appears PK but belongs to unusual ASN or relay infrastructure.</li>
+<li>Traffic looks automated or inconsistent with the claimed route.</li>
+<li>Fresh PK-looking source suddenly hits sensitive pages.</li>
+<li>Policy should alert, step-up, throttle, or investigate.</li>
+</ul>
+</article>
+</div>
+</section>
+
+<section class="section-block" id="quiz">
+<div class="section-head reveal">
+<p class="eyebrow">Assessment</p>
+<h2>QUIZ</h2>
+</div>
+<div class="panel quiz-panel reveal">
+<div id="quizBox"></div>
+<div class="quiz-footer">
+<button class="btn primary" id="checkQuiz">Check answers</button>
+<p id="scoreText"></p>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<p>Geofencing Training Module • Clean animated flowcharts • Offline professional interface</p>
+</footer>
+<script src="js/app.js"></script>
+</body>
+</html>
