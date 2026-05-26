@@ -1,0 +1,45 @@
+Your XRDP login is succeeding, but the desktop session is closing. Do this exact fix sequence.
+1. Install missing XRDP desktop backend
+sudo apt update
+sudo apt install -y xrdp xorgxrdp xfce4 xfce4-goodies dbus-x11
+________________________________________
+2. Fix XRDP startup file properly
+Open:
+sudo nano /etc/xrdp/startwm.sh
+At the very end, replace the last lines with only this:
+unset DBUS_SESSION_BUS_ADDRESS
+unset XDG_RUNTIME_DIR
+startxfce4
+So the bottom should not continue to /etc/X11/Xsession.
+Save:
+CTRL + O
+ENTER
+CTRL + X
+________________________________________
+3. Create a separate RDP user
+Do not use the same kali user if it is already logged into the local Kali desktop.
+sudo adduser rdpuser
+sudo usermod -aG sudo rdpuser
+Set XFCE for that user:
+sudo -u rdpuser bash -c 'echo "startxfce4" > /home/rdpuser/.xsession'
+sudo chmod +x /home/rdpuser/.xsession
+sudo chown rdpuser:rdpuser /home/rdpuser/.xsession
+________________________________________
+4. Fix XRDP permissions
+sudo adduser xrdp ssl-cert
+sudo systemctl restart xrdp xrdp-sesman
+Check:
+sudo systemctl status xrdp
+sudo systemctl status xrdp-sesman
+________________________________________
+5. Use this Guacamole config
+In Guacamole connection settings:
+Protocol: RDP
+Hostname: 192.168.3.128
+Port: 3389
+Username: rdpuser
+Password: password of rdpuser
+Security mode: RDP
+Ignore server certificate: Yes
+Try Security mode:any first, not NLA.
+
