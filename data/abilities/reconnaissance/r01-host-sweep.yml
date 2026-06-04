@@ -1,0 +1,16 @@
+- id: r01-host-sweep
+  name: Network Host Discovery Sweep
+  description: Discover all live hosts on Blue Team VLAN 10.0.20.0/24
+  tactic: reconnaissance
+  technique:
+    attack_id: T1595.001
+    name: Active Scanning - Scanning IP Blocks
+  platforms:
+    linux:
+      sh:
+        command: |
+          nmap -sn 10.0.20.0/24 --open 2>/dev/null | grep 'report for' || echo 'scan complete'
+        cleanup: |
+          rm -f /tmp/hosts.txt
+  singleton: false
+  repeatable: false

