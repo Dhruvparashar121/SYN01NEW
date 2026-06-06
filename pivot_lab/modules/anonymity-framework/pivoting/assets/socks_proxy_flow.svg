@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 740" role="img" aria-labelledby="title desc"><title id="title">SOCKS and proxychains mechanics</title><desc id="desc">Clear layered flow from tool wrapper to SOCKS listener, Metasploit route, Meterpreter session, pivot host and internal target.</desc>
+<defs><pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0V42" fill="none" class="grid"/></pattern><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L0,9 L8,4.5 z" fill="#00d5ff"/></marker><marker id="arrow2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L0,9 L8,4.5 z" fill="#a78bfa"/></marker></defs>
+<style>
+  .bg{fill:#071120}.grid{stroke:rgba(255,255,255,.055);stroke-width:1}.zone{fill:rgba(255,255,255,.035);stroke:rgba(255,255,255,.14);stroke-width:1.5}.zoneTitle{font:700 16px Inter,Segoe UI,sans-serif;letter-spacing:.08em}.node-card{filter:drop-shadow(0 16px 22px rgba(0,0,0,.35))}.nodeTitle{font:800 15px Inter,Segoe UI,sans-serif;letter-spacing:.03em}.nodeSub{font:12px ui-monospace,Consolas,monospace}.iconText{font:800 12px ui-monospace,Consolas,monospace}.noteText{font:700 13px Inter,Segoe UI,sans-serif;fill:#d7f8ff}.smallText{font:12px ui-monospace,Consolas,monospace;fill:#8ea6ba}.flow{fill:none;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:9 12;animation:dash 2.4s linear infinite}.flowThin{fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:6 10;animation:dash 2.8s linear infinite}.pulse{animation:pulse 2.6s ease-in-out infinite;transform-origin:center}@keyframes dash{to{stroke-dashoffset:-42}}@keyframes pulse{0%,100%{opacity:.95}50%{opacity:.35}}.packet{filter:drop-shadow(0 0 8px currentColor)}
+</style>
+<rect width="1500" height="740" class="bg"/><rect width="1500" height="740" fill="url(#grid)" opacity=".9"/>
+<rect x="52" y="66" width="1396" height="120" rx="26" class="zone" stroke="#00d5ff"/><text x="84" y="112" class="zoneTitle" fill="#00d5ff">ATTACKER MACHINE</text><text x="84" y="148" class="noteText">External tools do not automatically know the hidden route. Proxychains pushes their TCP connections into a local SOCKS listener.</text>
+<rect x="52" y="266" width="1396" height="120" rx="26" class="zone" stroke="#a78bfa"/><text x="84" y="348" class="zoneTitle" fill="#a78bfa">METASPLOIT + METERPRETER TUNNEL</text><text x="84" y="374" class="noteText">Autoroute maps hidden subnet to the active session.</text>
+<rect x="52" y="466" width="1396" height="120" rx="26" class="zone" stroke="#00ff88"/><text x="84" y="512" class="zoneTitle" fill="#00ff88">INTERNAL NETWORK</text><text x="84" y="548" class="noteText">Hidden subnet accepts relayed TCP.</text>
+<rect x="100" y="220" width="190" height="88" rx="20" fill="#0b1226" stroke="#00d5ff" stroke-width="2" class="node-card"/>
+<circle cx="128" cy="248" r="15" fill="rgba(255,255,255,.08)" stroke="#00d5ff"/>
+<text x="128" y="253" class="iconText" fill="#00d5ff" text-anchor="middle">A</text>
+<text x="158" y="248" class="nodeTitle" fill="#eefbff">Nmap</text>
+<text x="118" y="281" class="nodeSub" fill="#9fb4c9">-sT -Pn</text>
+<text x="118" y="297" class="nodeSub" fill="#9fb4c9">TCP connect</text>
+<rect x="350" y="220" width="214" height="88" rx="20" fill="#0b1226" stroke="#00d5ff" stroke-width="2" class="node-card"/>
+<circle cx="378" cy="248" r="15" fill="rgba(255,255,255,.08)" stroke="#00d5ff"/>
+<text x="378" y="253" class="iconText" fill="#00d5ff" text-anchor="middle">B</text>
+<text x="408" y="248" class="nodeTitle" fill="#eefbff">Proxychains</text>
+<text x="368" y="281" class="nodeSub" fill="#9fb4c9">forces tool traffic</text>
+<text x="368" y="297" class="nodeSub" fill="#9fb4c9">to SOCKS</text>
+<rect x="628" y="220" width="238" height="88" rx="20" fill="#171238" stroke="#a78bfa" stroke-width="2" class="node-card"/>
+<circle cx="656" cy="248" r="15" fill="rgba(255,255,255,.08)" stroke="#a78bfa"/>
+<text x="656" y="253" class="iconText" fill="#a78bfa" text-anchor="middle">C</text>
+<text x="686" y="248" class="nodeTitle" fill="#eefbff">SOCKS Listener</text>
+<text x="646" y="281" class="nodeSub" fill="#9fb4c9">127.0.0.1:1080</text>
+<text x="646" y="297" class="nodeSub" fill="#9fb4c9">attacker side</text>
+<rect x="924" y="220" width="214" height="88" rx="20" fill="#24114a" stroke="#a78bfa" stroke-width="2" class="node-card"/>
+<circle cx="952" cy="248" r="15" fill="rgba(255,255,255,.08)" stroke="#a78bfa"/>
+<text x="952" y="253" class="iconText" fill="#a78bfa" text-anchor="middle">D</text>
+<text x="982" y="248" class="nodeTitle" fill="#eefbff">MSF Route</text>
+<text x="942" y="281" class="nodeSub" fill="#9fb4c9">172.20.10.0/24</text>
+<text x="942" y="297" class="nodeSub" fill="#9fb4c9">via session 2</text>
+<rect x="1172" y="220" width="210" height="88" rx="20" fill="#102033" stroke="#38bdf8" stroke-width="2" class="node-card"/>
+<circle cx="1200" cy="248" r="15" fill="rgba(255,255,255,.08)" stroke="#38bdf8"/>
+<text x="1200" y="253" class="iconText" fill="#38bdf8" text-anchor="middle">E</text>
+<text x="1230" y="248" class="nodeTitle" fill="#eefbff">Meterpreter</text>
+<text x="1190" y="281" class="nodeSub" fill="#9fb4c9">encapsulated tunnel</text>
+<text x="1190" y="297" class="nodeSub" fill="#9fb4c9">to pivot host</text>
+<rect x="396" y="474" width="236" height="96" rx="20" fill="#0b2940" stroke="#38bdf8" stroke-width="2" class="node-card"/>
+<circle cx="424" cy="502" r="15" fill="rgba(255,255,255,.08)" stroke="#38bdf8"/>
+<text x="424" y="507" class="iconText" fill="#38bdf8" text-anchor="middle">F</text>
+<text x="454" y="502" class="nodeTitle" fill="#eefbff">Pivot Host</text>
+<text x="414" y="535" class="nodeSub" fill="#9fb4c9">dual reachable</text>
+<text x="414" y="551" class="nodeSub" fill="#9fb4c9">172.20.10.10</text>
+<rect x="850" y="474" width="248" height="96" rx="20" fill="#12352a" stroke="#00ff88" stroke-width="2" class="node-card"/>
+<circle cx="878" cy="502" r="15" fill="rgba(255,255,255,.08)" stroke="#00ff88"/>
+<text x="878" y="507" class="iconText" fill="#00ff88" text-anchor="middle">G</text>
+<text x="908" y="502" class="nodeTitle" fill="#eefbff">Internal Target</text>
+<text x="868" y="535" class="nodeSub" fill="#9fb4c9">172.20.10.2:445</text>
+<text x="868" y="551" class="nodeSub" fill="#9fb4c9">reachable via pivot</text>
+<path id="s1" class="flow" d="M290 264 L350 264" stroke="#00d5ff" marker-end="url(#arrow)"/><path id="s2" class="flow" d="M564 264 L628 264" stroke="#00d5ff" marker-end="url(#arrow)"/><path id="s3" class="flow" d="M866 264 L924 264" stroke="#a78bfa" marker-end="url(#arrow2)"/><path id="s4" class="flow" d="M1138 264 L1172 264" stroke="#a78bfa" marker-end="url(#arrow2)"/><path id="s5" class="flow" d="M1277 308 C1200 428 718 520 632 520" stroke="#38bdf8" marker-end="url(#arrow)"/><path id="s6" class="flow" d="M632 520 L850 520" stroke="#00ff88" marker-end="url(#arrow)"/>
+<circle r="5" fill="#00d5ff"><animateMotion dur="2.6s" repeatCount="indefinite"><mpath href="#s1"/></animateMotion></circle><circle r="5" fill="#00d5ff"><animateMotion dur="2.6s" begin=".35s" repeatCount="indefinite"><mpath href="#s2"/></animateMotion></circle><circle r="5" fill="#a78bfa"><animateMotion dur="2.8s" begin=".7s" repeatCount="indefinite"><mpath href="#s3"/></animateMotion></circle><circle r="5" fill="#38bdf8"><animateMotion dur="3.2s" begin="1s" repeatCount="indefinite"><mpath href="#s5"/></animateMotion></circle><circle r="5" fill="#00ff88"><animateMotion dur="2.5s" begin="1.4s" repeatCount="indefinite"><mpath href="#s6"/></animateMotion></circle>
+<rect x="110" y="630" width="1280" height="58" rx="18" fill="rgba(0,255,231,.055)" stroke="rgba(0,255,231,.18)"/><text x="140" y="666" class="noteText">Key clarity: autoroute is inside Metasploit; SOCKS listener is on attacker side; proxychains is only the wrapper that sends TCP tools into SOCKS.</text>
+</svg>

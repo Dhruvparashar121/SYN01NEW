@@ -1,0 +1,19 @@
+Pivoting Training Module - Advanced Workflow Animation Upgrade
+==============================================================
+
+This ZIP keeps the original SOC-TRAIN website structure and upgrades only the Pivoting module.
+
+Major improvements in this version:
+1. Rebuilt the Pivoting page into a clearer cyber-range learning interface.
+2. Added an 8-stage interactive workflow simulator with auto-play, next/previous controls, active route highlighting and animated packets.
+3. Replaced older diagrams with improved SVG boards:
+   - pivoting_workflow.svg: end-to-end topology and pivot path animation
+   - socks_proxy_flow.svg: proxychains + SOCKS + Meterpreter tunnel mechanics
+   - internal_target_access.svg: internal target access through pivot route
+   - defender_timeline.svg: detection correlation timeline
+4. Added learner objectives, defender observations and verification gates for every stage.
+5. Expanded the tunnel explanation and concept matrix to clarify pivot host vs autoroute vs SOCKS vs proxychains.
+6. Improved command walkthrough structure with lab-only guardrails and verification points.
+7. Expanded quiz coverage for exam/viva conceptual clarity.
+
+Use in authorised isolated cyber range environments only.

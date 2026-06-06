@@ -1,0 +1,10 @@
+Pivoting UI Polish v4
+======================
+Professional visual correction pass requested by the user.
+
+Focus areas:
+1. Arrow sizes reduced and standardised across diagrams.
+2. Animated packet sizes reduced to avoid visual crowding.
+3. SVG text boxes widened and text shortened so labels remain inside boxes.
+4. Workflow simulator improved with consistent zones, active path highlighting and cleaner labels.
+5. Overall UI spacing, typography and responsive behaviour polished for presentation use.

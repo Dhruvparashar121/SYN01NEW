@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 820" role="img" aria-labelledby="title desc">
+<title id="title">Professional pivoting workflow diagram</title>
+<desc id="desc">Attacker, perimeter pivot host, SOCKS tunnel, hidden subnet internal target and defender evidence timeline.</desc>
+<defs>
+  <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0V42" fill="none" class="grid"/></pattern>
+  <linearGradient id="panel" x1="0" x2="1"><stop offset="0" stop-color="#0b1530"/><stop offset="1" stop-color="#06101f"/></linearGradient>
+  <marker id="arrowCyan" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L0,9 L8,4.5 z" fill="#00d5ff"/></marker>
+  <marker id="arrowViolet" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L0,9 L8,4.5 z" fill="#a78bfa"/></marker>
+  <marker id="arrowGreen" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L0,9 L8,4.5 z" fill="#00ff88"/></marker>
+</defs>
+<style>
+  .bg{fill:#071120}.grid{stroke:rgba(255,255,255,.055);stroke-width:1}.zone{fill:rgba(255,255,255,.035);stroke:rgba(255,255,255,.14);stroke-width:1.5}.zoneTitle{font:700 16px Inter,Segoe UI,sans-serif;letter-spacing:.08em}.node-card{filter:drop-shadow(0 16px 22px rgba(0,0,0,.35))}.nodeTitle{font:800 15px Inter,Segoe UI,sans-serif;letter-spacing:.03em}.nodeSub{font:12px ui-monospace,Consolas,monospace}.iconText{font:800 12px ui-monospace,Consolas,monospace}.noteText{font:700 13px Inter,Segoe UI,sans-serif;fill:#d7f8ff}.smallText{font:12px ui-monospace,Consolas,monospace;fill:#8ea6ba}.flow{fill:none;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:9 12;animation:dash 2.4s linear infinite}.flowThin{fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:6 10;animation:dash 2.8s linear infinite}@keyframes dash{to{stroke-dashoffset:-42}}.packet{filter:drop-shadow(0 0 8px currentColor)}
+</style>
+<rect width="1500" height="820" class="bg"/><rect width="1500" height="820" fill="url(#grid)" opacity=".9"/>
+<rect x="36" y="54" width="300" height="520" rx="28" class="zone" stroke="#00d5ff"/><text x="62" y="92" class="zoneTitle" fill="#00d5ff">ATTACKER SIDE</text>
+<rect x="374" y="54" width="420" height="520" rx="28" class="zone" stroke="#38bdf8"/><text x="400" y="92" class="zoneTitle" fill="#38bdf8">PERIMETER / DMZ</text>
+<rect x="832" y="54" width="418" height="520" rx="28" class="zone" stroke="#a78bfa"/><text x="858" y="92" class="zoneTitle" fill="#a78bfa">HIDDEN INTERNAL SUBNET</text>
+<rect x="1284" y="54" width="180" height="520" rx="28" class="zone" stroke="#00ff88"/><text x="1310" y="92" class="zoneTitle" fill="#00ff88">SOC VIEW</text>
+
+<rect x="76" y="210" width="218" height="96" rx="20" fill="#0b1226" stroke="#00d5ff" stroke-width="2" class="node-card"/>
+<circle cx="104" cy="238" r="15" fill="rgba(255,255,255,.08)" stroke="#00d5ff"/><text x="104" y="243" class="iconText" fill="#00d5ff" text-anchor="middle">01</text>
+<text x="134" y="238" class="nodeTitle" fill="#eefbff">Kali Operator</text>
+<text x="94" y="271" class="nodeSub" fill="#9fb4c9">external route only</text><text x="94" y="287" class="nodeSub" fill="#9fb4c9">tools + proxychains</text>
+
+<rect x="424" y="150" width="236" height="108" rx="20" fill="#0b2940" stroke="#38bdf8" stroke-width="2" class="node-card"/>
+<circle cx="452" cy="178" r="15" fill="rgba(255,255,255,.08)" stroke="#38bdf8"/><text x="452" y="183" class="iconText" fill="#38bdf8" text-anchor="middle">02</text>
+<text x="482" y="178" class="nodeTitle" fill="#eefbff">Tomcat Host</text>
+<text x="442" y="211" class="nodeSub" fill="#9fb4c9">203.0.113.45:8080</text><text x="442" y="227" class="nodeSub" fill="#9fb4c9">public web surface</text>
+
+<rect x="492" y="354" width="236" height="108" rx="20" fill="#281350" stroke="#a78bfa" stroke-width="2" class="node-card"/>
+<circle cx="520" cy="382" r="15" fill="rgba(255,255,255,.08)" stroke="#a78bfa"/><text x="520" y="387" class="iconText" fill="#a78bfa" text-anchor="middle">03</text>
+<text x="550" y="382" class="nodeTitle" fill="#eefbff">Pivot Session</text>
+<text x="510" y="415" class="nodeSub" fill="#9fb4c9">Meterpreter route</text><text x="510" y="431" class="nodeSub" fill="#9fb4c9">172.20.10.10</text>
+
+<rect x="910" y="246" width="270" height="124" rx="22" fill="#12352a" stroke="#00ff88" stroke-width="2.2" class="node-card"/>
+<circle cx="940" cy="276" r="16" fill="rgba(255,255,255,.08)" stroke="#00ff88"/><text x="940" y="281" class="iconText" fill="#00ff88" text-anchor="middle">04</text>
+<text x="974" y="276" class="nodeTitle" fill="#eefbff">Internal Target</text>
+<text x="936" y="315" class="nodeSub" fill="#9fb4c9">172.20.10.2</text><text x="936" y="333" class="nodeSub" fill="#9fb4c9">service response</text><text x="936" y="351" class="nodeSub" fill="#9fb4c9">end of route</text>
+
+<rect x="1298" y="154" width="142" height="84" rx="20" fill="#102033" stroke="#00ff88" stroke-width="2" class="node-card"/>
+<text x="1316" y="182" class="nodeTitle" fill="#eefbff">Alert</text><text x="1316" y="215" class="nodeSub" fill="#9fb4c9">scan + login</text>
+<rect x="1298" y="282" width="142" height="84" rx="20" fill="#102033" stroke="#00ff88" stroke-width="2" class="node-card"/>
+<text x="1316" y="310" class="nodeTitle" fill="#eefbff">Alert</text><text x="1316" y="343" class="nodeSub" fill="#9fb4c9">ARP / SMB</text>
+<rect x="1298" y="410" width="142" height="84" rx="20" fill="#102033" stroke="#00ff88" stroke-width="2" class="node-card"/>
+<text x="1316" y="438" class="nodeTitle" fill="#eefbff">Alert</text><text x="1316" y="471" class="nodeSub" fill="#9fb4c9">target access</text>
+
+<path id="p1" class="flow" d="M294 258 C340 258 374 204 424 204" stroke="#00d5ff" marker-end="url(#arrowCyan)"/>
+<path id="p2" class="flow" d="M542 258 C542 312 574 324 610 354" stroke="#38bdf8" marker-end="url(#arrowCyan)"/>
+<path id="p3" class="flow" d="M728 408 C800 408 826 308 910 308" stroke="#a78bfa" marker-end="url(#arrowViolet)"/>
+<path id="p4" class="flowThin" d="M1180 308 C1226 292 1260 324 1298 324" stroke="#00ff88" marker-end="url(#arrowGreen)"/>
+<path id="p5" class="flowThin" d="M1180 308 C1232 345 1258 448 1298 452" stroke="#00ff88" marker-end="url(#arrowGreen)"/>
+<path id="p6" class="flowThin" d="M660 204 C900 150 1130 150 1298 196" stroke="#00ff88" opacity=".6" marker-end="url(#arrowGreen)"/>
+<g style="color:#00d5ff"><circle r="5" fill="#00d5ff" class="packet"><animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion></circle></g>
+<g style="color:#38bdf8"><circle r="5" fill="#38bdf8" class="packet"><animateMotion dur="3.1s" begin=".35s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion></circle></g>
+<g style="color:#a78bfa"><circle r="5" fill="#a78bfa" class="packet"><animateMotion dur="3.2s" begin=".55s" repeatCount="indefinite"><mpath href="#p3"/></animateMotion></circle></g>
+<g style="color:#00ff88"><circle r="5" fill="#00ff88" class="packet"><animateMotion dur="3.4s" begin=".85s" repeatCount="indefinite"><mpath href="#p4"/></animateMotion></circle></g>
+
+<rect x="68" y="620" width="1370" height="134" rx="26" fill="url(#panel)" stroke="rgba(255,255,255,.14)"/>
+<text x="96" y="657" class="zoneTitle" fill="#e9fbff">PIVOTING FLOW SUMMARY</text>
+<text x="96" y="688" class="noteText">1 Identify exposed service &gt; 2 gain controlled foothold &gt; 3 elevate for route control &gt; 4 discover hidden subnet.</text>
+<text x="96" y="716" class="noteText">5 Add autoroute + SOCKS &gt; 6 scan through proxychains &gt; 7 validate internal target &gt; 8 correlate defender evidence.</text>
+<text x="96" y="744" class="smallText">Final topology now ends at one Internal Target only; no separate endpoint box is shown after it.</text>
+</svg>

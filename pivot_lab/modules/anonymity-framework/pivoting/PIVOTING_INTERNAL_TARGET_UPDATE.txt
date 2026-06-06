@@ -1,0 +1,13 @@
+Pivoting internal target update
+================================
+
+Requested change completed: all Pivoting module visuals and explanatory text now end at a simple Internal Target.
+
+Changes made:
+- Removed the separate payload-listener concept from the workflow.
+- Replaced the payload-direction board with an Internal Target Access board.
+- Updated the interactive workflow stages, command tab, quiz and defender timeline.
+- Replaced the older payload comparison SVG with internal_target_access.svg.
+- Preserved SOCKS listener references because that listener is part of the SOCKS/proxychains tunnel concept.
+
+Use only in an authorised isolated cyber range environment.

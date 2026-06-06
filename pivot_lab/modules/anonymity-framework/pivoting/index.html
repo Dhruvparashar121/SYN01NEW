@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pivoting Training Module | Advanced Cyber Range Workflow</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="background-grid"></div>
+  <div class="scanlines"></div>
+  <div class="orb orb-left"></div>
+  <div class="orb orb-right"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#overview" aria-label="Pivoting module home">
+      <span class="brand-mark">PV</span>
+      <span><small>Cyber Range Training</small><strong>Pivoting Module</strong></span>
+    </a>
+    <nav class="nav-pills" aria-label="Pivoting module navigation">
+      <a href="#overview">Overview</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#tunnel">Tunnel</a>
+      <a href="#internal-access">Internal Target</a>
+      <a href="#defender">Detection</a>
+      <a href="#commands">Lab Steps</a>
+      <a href="#quiz">Quiz</a>
+    </nav>
+    <a class="portal-link" href="../index.html">← Training Modules</a>
+  </header>
+
+  <main>
+    <section class="hero section" id="overview">
+      <article class="hero-copy glass reveal">
+        <p class="eyebrow accent">PV-TUNNEL · advanced workflow version</p>
+        <h1>Pivoting</h1>
+        <p class="lead">This version improves the module from a simple sequence into a complete visual training workflow: attack path, tunnel construction, internal-target access decision, and defender correlation are shown together so the learner understands both the offensive mechanism and the defensive evidence trail.</p>
+        <div class="cta-row">
+          <button class="primary" data-scroll="#workflow">Launch workflow simulator</button>
+          <button class="secondary" data-scroll="#tunnel">Study tunnel mechanics</button>
+        </div>
+        <div class="hero-stats">
+          <span><b>08</b><em>animated stages</em></span>
+          <span><b>05</b><em>visual boards</em></span>
+          <span><b>04</b><em>learning gates</em></span>
+          <span><b>06</b><em>defender signals</em></span>
+        </div>
+      </article>
+      <aside class="hero-visual glass reveal">
+        <div class="visual-header"><span class="pulse-dot"></span><span>Lab topology · pivot route simulation</span><span class="status-pill">SOCKS :1080</span></div>
+        <img class="workflow-img" src="assets/pivoting_workflow.svg" alt="Advanced animated pivoting workflow showing attacker, public host, pivot tunnel, hidden subnet and defender signals" />
+      </aside>
+    </section>
+
+    <section class="section concept-strip" aria-label="pivoting concept cards">
+      <article class="info-card reveal violetline"><span class="icon">01</span><h2>Pivot Host</h2><p>The compromised host has dual visibility: it can communicate outward to the operator and inward to a hidden subnet. It becomes the relay point, not the final objective.</p></article>
+      <article class="info-card reveal cyaline"><span class="icon">02</span><h2>Route Control</h2><p>Autoroute inserts knowledge into Metasploit’s route table so MSF modules understand which session can reach the internal network.</p></article>
+      <article class="info-card reveal blueline"><span class="icon">03</span><h2>SOCKS Bridge</h2><p>A local SOCKS listener on the attacker side exposes the tunnel to external tools. It is usually reached as <b>127.0.0.1:1080</b>.</p></article>
+      <article class="info-card reveal greenline"><span class="icon">04</span><h2>Internal Target</h2><p>The final objective is simplified to an internal target. Learners validate reachability through the pivot route without showing any separate listener concept.</p></article>
+    </section>
+
+    <section class="section" id="workflow">
+      <div class="section-title reveal">
+        <p class="eyebrow accent">Animated mission workflow</p>
+        <h2>Eight-stage pivoting simulator</h2>
+        <p>The previous workflow is upgraded into a guided simulator. Each stage highlights the active path, packet direction, learner objective, verification gate, and defender evidence.</p>
+      </div>
+
+      <div class="workflow-shell glass reveal">
+        <div class="workflow-head">
+          <div><p class="eyebrow">Scenario playback</p><h3 id="stageTitleTop">Stage 01 · External reconnaissance</h3></div>
+          <div class="play-controls">
+            <button id="prevStage" class="mini-btn">← Prev</button>
+            <button id="playStage" class="mini-btn active">Auto Play</button>
+            <button id="nextStage" class="mini-btn">Next →</button>
+          </div>
+        </div>
+        <div class="workflow-layout">
+          <div class="stage-rail" id="stageRail" aria-label="Pivoting stages"></div>
+          <div class="stage-visual" id="stageVisual" aria-label="Animated pivoting workflow visual"></div>
+          <article class="stage-panel">
+            <p class="eyebrow" id="stageTag">Stage 01</p>
+            <h3 id="stageTitle"></h3>
+            <p id="stageText"></p>
+            <div class="stage-metrics" id="stageMetrics"></div>
+            <div class="progress-line"><span id="stageProgress"></span></div>
+            <div class="learning-grid">
+              <div class="focus-box"><h4>Learner explains</h4><ul id="focusList"></ul></div>
+              <div class="observe-box"><h4>Defender sees</h4><ul id="observeList"></ul></div>
+            </div>
+            <div class="verify-box"><b>Verification gate</b><span id="verifyText"></span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section grid-2" id="tunnel">
+      <article class="deep-card reveal">
+        <p class="eyebrow accent">Layered flowchart</p>
+        <h2>SOCKS and proxychains tunnel mechanics</h2>
+        <p>Metasploit autoroute and SOCKS do different jobs. Autoroute makes Metasploit aware of the hidden subnet. SOCKS gives normal TCP tools a local doorway into that tunnel. Proxychains forces those tools to use the doorway.</p>
+        <img class="diagram-img" src="assets/socks_proxy_flow.svg" alt="Animated SOCKS and proxychains flow from Nmap to local SOCKS listener to Metasploit tunnel and internal target" />
+      </article>
+      <article class="deep-card reveal tunnel-explainer">
+        <div class="section-title align-left"><p class="eyebrow accent">Packet transformation</p><h2>What actually changes?</h2></div>
+        <div id="packetSteps" class="packet-steps"></div>
+        <div class="terminal-card">
+          <div class="terminal-top"><span></span><span></span><span></span><em>pivot-console · replay</em></div>
+          <pre id="terminalText"></pre>
+        </div>
+      </article>
+    </section>
+
+    <section class="section" id="internal-access">
+      <div class="section-title reveal">
+        <p class="eyebrow accent">Internal access board</p>
+        <h2>Internal target access through pivot route</h2>
+        <p>The improved animation now focuses on the clean end-state: the operator does not directly reach the hidden network; access is relayed through the pivot host and terminates at the internal target.</p>
+      </div>
+      <div class="grid-2">
+        <article class="deep-card reveal"><img class="diagram-img" src="assets/internal_target_access.svg" alt="Animated board showing attacker traffic reaching the internal target through the pivot route" /></article>
+        <article class="deep-card reveal decision-card">
+          <h3>Internal target workflow</h3>
+          <div class="decision-step"><b>1</b><span>Is the internal target directly reachable from the external operator?</span><em>No → direct access fails because segmentation blocks the path.</em></div>
+          <div class="decision-step"><b>2</b><span>Can the operator reach the internal target through the pivot route?</span><em>Yes → traffic reaches the target through SOCKS, Metasploit route and the pivot host.</em></div>
+          <div class="decision-step"><b>3</b><span>Which path generates defender evidence?</span><em>The evidence is the routed path: proxy use, pivot-host traffic, and internal service access.</em></div>
+          <div class="decision-step"><b>4</b><span>What should the learner conclude?</span><em>Successful access is proven by route validation and target response, not by placing another listener in the diagram.</em></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section grid-2" id="defender">
+      <article class="deep-card reveal">
+        <p class="eyebrow accent">Defender correlation</p>
+        <h2>Detection timeline: from public scan to internal target</h2>
+        <p>The defender view converts the same pivoting workflow into observable evidence. It helps blue-team learners understand how separate weak signals become one strong incident story.</p>
+        <img class="diagram-img" src="assets/defender_timeline.svg" alt="Animated defender timeline showing reconnaissance, web deployment, privilege escalation, internal discovery, SOCKS tunnelling and internal target access" />
+      </article>
+      <article class="deep-card reveal detection-board">
+        <h3>Correlation checklist</h3>
+        <ul class="check-list">
+          <li><b>Perimeter:</b> repeated service enumeration and login attempts on non-standard web ports.</li>
+          <li><b>Application:</b> unexpected manager login, new deployed archive, suspicious child process.</li>
+          <li><b>Host:</b> service account suddenly transitions to high privilege or spawns post-exploitation tooling.</li>
+          <li><b>Network:</b> DMZ host performs ARP sweep, SMB probe, or repeated TCP connects into an internal subnet.</li>
+          <li><b>Tunnel:</b> many full TCP connections appear to originate from the pivot host rather than the attacker.</li>
+          <li><b>Internal target:</b> service access attempts and responses are correlated with the pivot route.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="section concepts" id="concepts">
+      <div class="section-title reveal">
+        <p class="eyebrow accent">Exam clarity matrix</p>
+        <h2>Route, SOCKS, proxychains and pivot host are different things</h2>
+      </div>
+      <div class="matrix reveal">
+        <div class="matrix-row head"><span>Element</span><span>Where it exists</span><span>What it does</span><span>Common mistake removed</span></div>
+        <div class="matrix-row"><span>Pivot host</span><span>Compromised perimeter/DMZ host</span><span>Relays traffic into a hidden subnet because it has internal visibility.</span><span>It is not the SOCKS listener.</span></div>
+        <div class="matrix-row"><span>Autoroute</span><span>Metasploit route table</span><span>Maps an internal subnet to a specific Meterpreter session.</span><span>It does not change the attacker OS route table.</span></div>
+        <div class="matrix-row"><span>SOCKS proxy</span><span>Attacker side local listener</span><span>Accepts TCP connections and sends them down the Meterpreter tunnel.</span><span>127.0.0.1:1080 is normally on the attacker machine.</span></div>
+        <div class="matrix-row"><span>Proxychains</span><span>Attacker-side wrapper</span><span>Forces external programs to use the SOCKS listener.</span><span>It does not create the tunnel by itself.</span></div>
+        <div class="matrix-row"><span>Internal target</span><span>Hidden subnet endpoint</span><span>Final reachable system after the pivot route and SOCKS path are validated.</span><span>It is the objective, not a separate listener box.</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="commands">
+      <div class="section-title reveal">
+        <p class="eyebrow accent">Lab-only replay</p>
+        <h2>Command walkthrough with verification gates</h2>
+        <p>These commands are included as a controlled cyber-range replay. They use documentation IP ranges and are meant for authorised isolated lab training only.</p>
+      </div>
+      <div class="command-layout reveal">
+        <div class="command-tabs" id="commandTabs"></div>
+        <article class="command-panel glass">
+          <div class="command-header"><div><p class="eyebrow" id="cmdPhase">Phase</p><h3 id="cmdTitle"></h3></div><span class="lab-chip">LAB ONLY</span></div>
+          <p id="cmdExplain"></p>
+          <pre><code id="cmdCode"></code></pre>
+          <div class="cmd-notes" id="cmdNotes"></div>
+          <div class="verify-box"><b>Verify before moving ahead</b><span id="cmdVerify"></span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section quiz-section" id="quiz">
+      <div class="section-title reveal">
+        <p class="eyebrow accent">Assessment</p>
+        <h2>Check your pivoting concepts</h2>
+        <p>The quiz targets conceptual confusion: pivot host vs SOCKS, autoroute vs OS route, proxychains vs tunnel, and internal target reachability.</p>
+      </div>
+      <div class="quiz-card glass reveal">
+        <div class="quiz-top"><span id="quizCount">Question 1 of 7</span><span id="quizScore">Score: 0</span></div>
+        <h3 id="questionText"></h3>
+        <div id="answerOptions" class="answer-options"></div>
+        <p class="quiz-feedback" id="quizFeedback"></p>
+        <button class="primary next" id="nextQuestion">Next Question</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

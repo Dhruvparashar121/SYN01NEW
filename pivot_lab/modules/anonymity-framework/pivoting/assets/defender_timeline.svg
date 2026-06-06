@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 740" role="img" aria-labelledby="title desc"><title id="title">Defender correlation timeline</title><desc id="desc">Timeline of observable signals during pivoting.</desc>
+<defs><pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0V42" fill="none" class="grid"/></pattern><marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L0,9 L8,4.5 z" fill="#00d5ff"/></marker></defs>
+<style>
+  .bg{fill:#071120}.grid{stroke:rgba(255,255,255,.055);stroke-width:1}.zone{fill:rgba(255,255,255,.035);stroke:rgba(255,255,255,.14);stroke-width:1.5}.zoneTitle{font:700 16px Inter,Segoe UI,sans-serif;letter-spacing:.08em}.node-card{filter:drop-shadow(0 16px 22px rgba(0,0,0,.35))}.nodeTitle{font:800 15px Inter,Segoe UI,sans-serif;letter-spacing:.03em}.nodeSub{font:12px ui-monospace,Consolas,monospace}.iconText{font:800 12px ui-monospace,Consolas,monospace}.noteText{font:700 13px Inter,Segoe UI,sans-serif;fill:#d7f8ff}.smallText{font:12px ui-monospace,Consolas,monospace;fill:#8ea6ba}.flow{fill:none;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:9 12;animation:dash 2.4s linear infinite}.flowThin{fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:6 10;animation:dash 2.8s linear infinite}.pulse{animation:pulse 2.6s ease-in-out infinite;transform-origin:center}@keyframes dash{to{stroke-dashoffset:-42}}@keyframes pulse{0%,100%{opacity:.95}50%{opacity:.35}}.packet{filter:drop-shadow(0 0 8px currentColor)}
+</style>
+<rect width="1500" height="740" class="bg"/><rect width="1500" height="740" fill="url(#grid)" opacity=".9"/>
+<text x="70" y="82" class="zoneTitle" fill="#00d5ff">DEFENDER TIMELINE: SEPARATE SIGNALS → ONE INCIDENT STORY</text>
+<path id="tl" d="M120 370 H1380" stroke="#00d5ff" stroke-width="4" stroke-linecap="round" stroke-dasharray="10 12" marker-end="url(#arr)" class="flow"/>
+<rect x="70" y="174" width="190" height="106" rx="20" fill="#0b1226" stroke="#00d5ff" stroke-width="2" class="node-card"/>
+<text x="88" y="202" class="nodeTitle" fill="#eefbff">01 Recon</text>
+<text x="88" y="235" class="nodeSub" fill="#9fb4c9">Nmap / service</text>
+<text x="88" y="251" class="nodeSub" fill="#9fb4c9">version requests</text>
+<rect x="288" y="430" width="190" height="106" rx="20" fill="#142032" stroke="#38bdf8" stroke-width="2" class="node-card"/>
+<text x="306" y="458" class="nodeTitle" fill="#eefbff">02 Web Admin</text>
+<text x="306" y="491" class="nodeSub" fill="#9fb4c9">manager login</text>
+<text x="306" y="507" class="nodeSub" fill="#9fb4c9">WAR deployment</text>
+<rect x="506" y="174" width="190" height="106" rx="20" fill="#281350" stroke="#a78bfa" stroke-width="2" class="node-card"/>
+<text x="524" y="202" class="nodeTitle" fill="#eefbff">03 Privilege</text>
+<text x="524" y="235" class="nodeSub" fill="#9fb4c9">service account</text>
+<text x="524" y="251" class="nodeSub" fill="#9fb4c9">high-integrity jump</text>
+<rect x="724" y="430" width="190" height="106" rx="20" fill="#422006" stroke="#facc15" stroke-width="2" class="node-card"/>
+<text x="742" y="458" class="nodeTitle" fill="#eefbff">04 Internal</text>
+<text x="742" y="491" class="nodeSub" fill="#9fb4c9">ARP sweep</text>
+<text x="742" y="507" class="nodeSub" fill="#9fb4c9">SMB probes</text>
+<rect x="942" y="174" width="190" height="106" rx="20" fill="#171238" stroke="#a78bfa" stroke-width="2" class="node-card"/>
+<text x="960" y="202" class="nodeTitle" fill="#eefbff">05 SOCKS</text>
+<text x="960" y="235" class="nodeSub" fill="#9fb4c9">full TCP connects</text>
+<text x="960" y="251" class="nodeSub" fill="#9fb4c9">from pivot host</text>
+<rect x="1160" y="430" width="210" height="106" rx="20" fill="#12352a" stroke="#00ff88" stroke-width="2" class="node-card"/>
+<text x="1178" y="458" class="nodeTitle" fill="#eefbff">06 Target Access</text>
+<text x="1178" y="491" class="nodeSub" fill="#9fb4c9">target service</text>
+<text x="1178" y="507" class="nodeSub" fill="#9fb4c9">route via pivot</text>
+<g><circle cx="165" cy="370" r="9" fill="#00d5ff"/><circle cx="383" cy="370" r="9" fill="#38bdf8"/><circle cx="601" cy="370" r="9" fill="#a78bfa"/><circle cx="819" cy="370" r="9" fill="#facc15"/><circle cx="1037" cy="370" r="9" fill="#a78bfa"/><circle cx="1265" cy="370" r="9" fill="#00ff88"/></g>
+<circle r="5" fill="#00d5ff"><animateMotion dur="5s" repeatCount="indefinite"><mpath href="#tl"/></animateMotion></circle>
+<rect x="94" y="606" width="1312" height="68" rx="20" fill="rgba(0,255,231,.055)" stroke="rgba(0,255,231,.18)"/><text x="124" y="642" class="noteText">Professional SOC takeaway: pivoting is detected by correlation. A scan, a web deployment, an ARP sweep and a target access become high-confidence when linked to the same perimeter host.</text>
+</svg>

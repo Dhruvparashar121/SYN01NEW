@@ -1,0 +1,20 @@
+SOC-TRAIN Website — Pivoting Module Improved
+============================================
+
+This package upgrades the Pivoting module added before Lateral Movement.
+
+Improvements in this ZIP:
+- Rebuilt Pivoting UI for better readability and professional cyber-range visual style.
+- Added improved SVG animations and flowcharts:
+  1. assets/pivoting_workflow.svg
+  2. assets/socks_proxy_flow.svg
+  3. assets/internal_target_access.svg
+  4. assets/defender_timeline.svg
+- Improved the interactive 8-stage workflow with a larger animated board.
+- Added learner focus and defender observation panels per stage.
+- Added a stronger concept table separating pivot host, autoroute, SOCKS, proxychains and internal target access.
+- Added command-phase verification notes.
+- Added defender timeline and checklist.
+- Expanded quiz assessment.
+
+Open website1/lab/index.html, launch Pivoting from the module grid, or directly open website1/lab/modules/pivoting/index.html.

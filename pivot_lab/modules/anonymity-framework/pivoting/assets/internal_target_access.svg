@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 760" role="img" aria-labelledby="title desc">
+<title id="title">Internal target access through pivot route</title>
+<desc id="desc">Clean flow showing external operator, SOCKS path, pivot host and internal target without a separate endpoint box.</desc>
+<style>
+.bg{fill:#05101f}.panel{fill:rgba(255,255,255,.035);stroke:rgba(255,255,255,.14);stroke-width:2}.zoneTitle{font:700 26px Orbitron,Arial;letter-spacing:3px}.note{font:500 17px Exo 2,Arial;fill:#9fb4c9}.nodeTitle{font:700 22px Orbitron,Arial;letter-spacing:1.5px}.nodeSub{font:500 15px Share Tech Mono,monospace}.path{fill:none;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:14 12;animation:dash 2.2s linear infinite}.pkt{filter:drop-shadow(0 0 10px #00ffe7)}@keyframes dash{to{stroke-dashoffset:-52}}</style>
+<defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#00ffe7"/><stop offset="1" stop-color="#a78bfa"/></linearGradient><marker id="arrowC" markerWidth="13" markerHeight="13" refX="10" refY="4" orient="auto"><path d="M0,0 L0,8 L11,4 z" fill="#00ffe7"/></marker><marker id="arrowG" markerWidth="13" markerHeight="13" refX="10" refY="4" orient="auto"><path d="M0,0 L0,8 L11,4 z" fill="#00ff88"/></marker></defs>
+<rect width="1500" height="760" rx="34" class="bg"/>
+<rect x="58" y="64" width="612" height="528" rx="34" class="panel" stroke="#00d5ff"/>
+<rect x="830" y="64" width="612" height="528" rx="34" class="panel" stroke="#00ff88"/>
+<text x="94" y="112" class="zoneTitle" fill="#00d5ff">EXTERNAL SIDE</text><text x="866" y="112" class="zoneTitle" fill="#00ff88">INTERNAL SIDE</text>
+<text x="94" y="148" class="note">Attacker tools enter the local SOCKS path.</text><text x="94" y="174" class="note">There is no direct route to the hidden subnet.</text>
+<text x="866" y="148" class="note">The pivot host relays traffic.</text><text x="866" y="174" class="note">The chain ends at the internal target.</text>
+<rect x="118" y="242" width="190" height="110" rx="22" fill="#101827" stroke="#00ffe7" stroke-width="2"/><text x="213" y="288" class="nodeTitle" fill="#eefbff" text-anchor="middle">Operator</text><text x="213" y="319" class="nodeSub" fill="#9fb4c9" text-anchor="middle">Kali tools</text>
+<rect x="394" y="242" width="210" height="110" rx="22" fill="#172554" stroke="#a78bfa" stroke-width="2"/><text x="499" y="288" class="nodeTitle" fill="#eefbff" text-anchor="middle">SOCKS Path</text><text x="499" y="319" class="nodeSub" fill="#9fb4c9" text-anchor="middle">127.0.0.1:1080</text>
+<rect x="894" y="242" width="210" height="110" rx="22" fill="#3b0764" stroke="#c084fc" stroke-width="2"/><text x="999" y="288" class="nodeTitle" fill="#eefbff" text-anchor="middle">Pivot Host</text><text x="999" y="319" class="nodeSub" fill="#9fb4c9" text-anchor="middle">172.20.10.10</text>
+<rect x="1190" y="242" width="210" height="110" rx="22" fill="#063a2c" stroke="#00ff88" stroke-width="2"/><text x="1295" y="283" class="nodeTitle" fill="#eefbff" text-anchor="middle">Internal</text><text x="1295" y="313" class="nodeTitle" fill="#eefbff" text-anchor="middle">Target</text><text x="1295" y="342" class="nodeSub" fill="#9fb4c9" text-anchor="middle">172.20.10.2</text>
+<path id="p1" class="path" d="M308 297 L394 297" stroke="#00ffe7" marker-end="url(#arrowC)"/>
+<path id="p2" class="path" d="M604 297 C720 205 790 205 894 297" stroke="url(#g1)" marker-end="url(#arrowC)"/>
+<path id="p3" class="path" d="M1104 297 L1190 297" stroke="#00ff88" marker-end="url(#arrowG)"/>
+<circle r="7" fill="#00ffe7" class="pkt"><animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion></circle><circle r="7" fill="#a78bfa" class="pkt"><animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion></circle><circle r="7" fill="#00ff88" class="pkt"><animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#p3"/></animateMotion></circle>
+<rect x="140" y="454" width="1220" height="86" rx="22" fill="rgba(0,255,231,.055)" stroke="rgba(0,255,231,.20)"/>
+<text x="176" y="488" class="note">Professional simplification: the final box is only the internal target.</text><text x="176" y="515" class="note">Path: external tool &gt; SOCKS path &gt; pivot host &gt; internal target response.</text>
+<rect x="220" y="638" width="1060" height="54" rx="18" fill="rgba(0,255,136,.06)" stroke="rgba(0,255,136,.20)"/><text x="750" y="674" class="note" text-anchor="middle">LRP focus: controlled access to an otherwise isolated internal endpoint.</text>
+</svg>
